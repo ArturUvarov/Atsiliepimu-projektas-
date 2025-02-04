@@ -1,2 +1,2 @@
 # Atsiliepimu-projektas-
-3-jų menesių full-stack projektas.
+3-jų menesių full-stack projektas
