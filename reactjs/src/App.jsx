@@ -1,5 +1,13 @@
-import reactLogo from "../src/assets/react.png";
-const CardComponent = () => {
+import reactLogo from "./assets/react.png";
+function App() {
+  return (
+    <>
+      <TailButton />
+      <TailExample/>
+    </>
+  );
+}
+function TailExample() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white shadow-lg rounded-lg w-96 overflow-hidden">
@@ -22,5 +30,12 @@ const CardComponent = () => {
       </div>
     </div>
   );
-};
-export default CardComponent;
+}
+function TailButton() {
+  return (
+    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      My man
+    </button>
+  );
+}
+export default App;
