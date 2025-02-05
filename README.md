@@ -37,6 +37,26 @@ Svetainę bus galima rasti adresu:
 - http://localhost:5173/
 
 
+## 🤖 Darbo pradžia
+
+1. Įveskite į katalogą
+```bash
+cd path/to/your/catalogue
+```
+
+2. Įdiegti paketus
+```bash
+npm install
+```
+
+3. Paleiskite serverį:
+```bash
+npm run dev
+```
+
+## Viskas!
+
+
 ## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
