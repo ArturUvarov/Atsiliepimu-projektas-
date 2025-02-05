@@ -4,7 +4,7 @@ Tai yra 3-jų menesių full-stack projektas
 
 ## 🚀 Pagrindinė dalis
 
-- **Frontend**: React
+- **Frontend**: React + Tailwindcss
 - **Backend**: Express.js + Node.js + API
 - **Container**: Docker
 - **Database**: MySQL Docker version
@@ -57,6 +57,6 @@ npm run dev
 ## Viskas!
 
 
-## 📜 License
+## 📜 Licencija
 
 This project is licensed under the MIT License - see the LICENSE file for details.
