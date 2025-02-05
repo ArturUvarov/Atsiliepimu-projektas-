@@ -34,7 +34,7 @@ docker-compose up
 ```
 
 Svetainę bus galima rasti adresu:
-- http://localhost:3000
+- http://localhost:5173/
 
 
 ## 📜 License
