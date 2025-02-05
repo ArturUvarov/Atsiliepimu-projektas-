@@ -37,7 +37,7 @@ Svetainę bus galima rasti adresu:
 - http://localhost:5173/
 
 
-## 🤖 Darbo pradžia
+## 🤖 Diegimo procesas
 
 1. Įveskite į katalogą
 ```bash
