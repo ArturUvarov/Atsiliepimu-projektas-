@@ -6,7 +6,8 @@
     "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
     "build": "tsx src/index.ts",
-    "drizzle": "npx drizzle-kit generate && npx drizzle-kit migrate"
+    "drizzle": "npx drizzle-kit generate && npx drizzle-kit migrate",
+    "drizzle:seed": "tsx ./src/db/seed.ts"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -15,6 +16,7 @@
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.3",
+    "drizzle-seed": "^0.3.1",
     "express": "~4.16.1",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
@@ -25,6 +27,8 @@
     "passport-jwt": "^4.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.4",
