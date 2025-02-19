@@ -3,7 +3,9 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "dev": "nodemon src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsx src/index.ts"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -22,9 +24,13 @@
     "passport-jwt": "^4.0.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/node": "^22.13.4",
     "drizzle-kit": "^0.30.4",
     "nodemon": "^3.1.7",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "ts-node": "^10.4.0"
   }
 }
