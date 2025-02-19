@@ -21,7 +21,7 @@ services:
       - ./api:/app
     ports:
       - "3000:3000"
-    command: sh -c "npm i && npm run dev"
+    command: sh -c "npm i && npm run drizzle && npm run dev"
     environment:
       # DB_HOST: mysql_db
       # DB_USER: root

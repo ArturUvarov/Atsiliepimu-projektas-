@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsx src/index.ts"
+    "build": "tsx src/index.ts",
+    "drizzle": "npx drizzle-kit generate && npx drizzle-kit migrate"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -29,8 +30,8 @@
     "@types/node": "^22.13.4",
     "drizzle-kit": "^0.30.4",
     "nodemon": "^3.1.7",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
-    "ts-node": "^10.4.0"
+    "ts-node": "^10.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
   }
 }
