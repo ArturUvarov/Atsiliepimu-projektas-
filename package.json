@@ -1,0 +1,28 @@
+{
+  "name": "atsiliepimu-projektas-",
+  "version": "1.0.0",
+  "description": "Tai yra 3-jų menesių full-stack projektas",
+  "homepage": "https://github.com/ArturUvarov/Atsiliepimu-projektas-#readme",
+  "bugs": {
+    "url": "https://github.com/ArturUvarov/Atsiliepimu-projektas-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturUvarov/Atsiliepimu-projektas-.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.39.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4"
+  }
+}
