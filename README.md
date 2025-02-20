@@ -34,7 +34,15 @@ docker-compose up
 ```
 
 Svetainę bus galima rasti adresu:
-- http://localhost:5173/
+- http://localhost/
+
+
+3. Dirbtinių duomenų užpildymas:
+
+Paleidus programą, reikia atsidaryti Docker Desktop esančią api konteinerio dalį, nueiti į Exec tab'ą ir parašyti komandą:
+```bash
+npm run drizzle:seed
+```
 
 
 ## 🤖 Diegimo procesas
