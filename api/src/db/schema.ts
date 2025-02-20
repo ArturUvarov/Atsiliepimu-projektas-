@@ -1,7 +1,7 @@
 import { int, mysqlTable, serial, varchar, tinyint } from 'drizzle-orm/mysql-core';
 
 export const User = mysqlTable('User', {
-  id: int({unsigned: true}).primaryKey(),
+  id: int({unsigned: true}).autoincrement().primaryKey(),
   username: varchar({ length: 255 }).notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
   password: varchar({ length: 255 }).notNull(),
