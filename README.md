@@ -7,7 +7,7 @@ Tai yra 3-jų menesių full-stack projektas
 - **Frontend**: React + Tailwindcss
 - **Backend**: Express.js + Node.js + API
 - **Container**: Docker
-- **Database**: MySQL Docker version
+- **Database**: MySQL, Drizzle ORM
 
 ## 🛠️ Būtinos sąlygos
 
@@ -34,7 +34,7 @@ docker-compose up
 ```
 
 Svetainę bus galima rasti adresu:
-- http://localhost/
+- http://localhost/8080
 
 
 3. Dirbtinių duomenų užpildymas:

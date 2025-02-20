@@ -3,7 +3,7 @@ import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { User } from "./schema";
 import bcrypt from "bcrypt";
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 const db = drizzle({ connection: { uri: process.env.DATABASE_URL } });
 
