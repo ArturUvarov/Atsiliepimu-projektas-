@@ -1,7 +1,8 @@
 import "dotenv/config";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { User, Comment, Tag, Subject, SubjectTag, Rate, Review } from "./schema";
+import { User } from "./schema";
+import { Subject } from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 
@@ -74,32 +75,11 @@ async function seedUsers() {
       }))
     );
   }
-
-  console.log("Users seeding completed.");
-}
-
-// Function to seed subjects
-async function seedSubjects() {
-  await db.insert(Subject).values({
-    id: 1,
-    name: "First subject",
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
-  console.log("Created subject: First subject");
-
-  const subjectCountResult = await db.select({ count: sql`COUNT(*)` }).from(Subject);
-  const subjectCount = subjectCountResult[0]?.count as number;
-
-  if (subjectCount < 10) {
-    console.log("Creating 50 random subjects...");
-    await db.insert(Subject).values(
-      Array.from({ length: 50 }).map((_, index) => ({
-        id: subjectCount + index + 1,
-        name: faker.lorem.paragraph(2),
-      }))
-    );
-  }
-
-  console.log("Subjects seeding completed.");
+  await db
+  .insert(Subject)
+  .values({ name: "Sub"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  console.log("Seeding completed.");
 }
 
 // Function to seed reviews
