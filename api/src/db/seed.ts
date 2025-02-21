@@ -2,6 +2,7 @@ import "dotenv/config";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { User } from "./schema";
+import { Subject } from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 
@@ -44,6 +45,10 @@ async function main() {
       }))
     );
   }
+  await db
+  .insert(Subject)
+  .values({ name: "Sub"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Seeding completed.");
 }
 

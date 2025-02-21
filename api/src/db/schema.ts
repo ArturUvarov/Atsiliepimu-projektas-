@@ -14,7 +14,18 @@ export const User = mysqlTable("User", {
   role: tinyint({ unsigned: true }).default(1).notNull(),
   status: tinyint({ unsigned: true }).default(1).notNull(),
 });
+
 export const comment = mysqlTable("comment", {
   id: int({ unsigned: true }).autoincrement().primaryKey(),
   postedAt: timestamp("posted_at").notNull().defaultNow(),
+});
+
+export const Subject = mysqlTable('Subject', {
+  id: int({unsigned: true}).autoincrement().primaryKey(),
+  name: varchar({ length: 255 }).notNull()
+});
+
+export const Tag = mysqlTable('Tag', {
+  id: int({unsigned: true}).autoincrement().primaryKey(),
+  name: varchar({ length: 255 }).notNull()
 });
