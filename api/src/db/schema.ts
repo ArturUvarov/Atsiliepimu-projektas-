@@ -5,6 +5,7 @@ import {
   tinyint,
   timestamp,
   date,
+  text,
 } from "drizzle-orm/mysql-core";
 
 // Define User schema
@@ -32,16 +33,26 @@ export const SubjectTag = mysqlTable('SubjectTag', {
   tagId: int({unsigned: true}).primaryKey().references(() => Tag.id)
 });
 
-// export const Comment = mysqlTable("comment", {
-//   id: int({ unsigned: true }).autoincrement().primaryKey(),
-//   postedAt: timestamp("posted_at").notNull().defaultNow(),
-// });
-
 export const Reviews = mysqlTable("Reviews", {
   id: int({ unsigned: true }).autoincrement().primaryKey(),
   userId: int({ unsigned: true }).notNull().references(() => User.id),
   subjectId: int({ unsigned: true }).notNull().references(() => Subject.id),
   title: varchar({ length: 255 }).notNull(),
-  content: varchar({ length: 255 }).notNull(),
+  content: text(),
   date: timestamp("date").notNull().defaultNow(),
+});
+
+export const Comment = mysqlTable("Comment", {
+  id: int({ unsigned: true }).autoincrement().primaryKey(),
+  reviewId: int({ unsigned: true }).notNull().references(() => Reviews.id),
+  userId: int({ unsigned: true }).notNull().references(() => User.id),
+  content: text(),
+  date: timestamp("date").notNull().defaultNow(),
+});
+
+export const Rate = mysqlTable("Rate", {
+  id: int({ unsigned: true }).autoincrement().primaryKey(),
+  reviewId: int({ unsigned: true }).notNull().references(() => Reviews.id),
+  userId: int({ unsigned: true }).notNull().references(() => User.id),
+  rate: tinyint({ unsigned: true }).notNull(),
 });

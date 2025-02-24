@@ -6,6 +6,8 @@ import { Subject } from "./schema";
 import { Tag } from "./schema";
 import { SubjectTag } from "./schema";
 import { Reviews } from "./schema";
+import { Comment } from "./schema";
+import { Rate } from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 
@@ -98,6 +100,18 @@ async function seedUsers() {
   await db
   .insert(Reviews)
   .values({ userId: 1, subjectId: 1, title: "Title", content: "Content"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  console.log("Seeding completed.");
+
+  await db
+  .insert(Comment)
+  .values({ reviewId: 1, userId: 1, content: "Comment"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  console.log("Seeding completed.");
+
+  await db
+  .insert(Rate)
+  .values({ reviewId: 1, userId: 1, rate: 5})
   .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Seeding completed.");
 }
