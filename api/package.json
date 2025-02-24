@@ -7,7 +7,8 @@
     "start": "node dist/index.js",
     "build": "tsx src/index.ts",
     "drizzle": "npx drizzle-kit generate && npx drizzle-kit migrate",
-    "drizzle:seed": "tsx ./src/db/seed.ts"
+    "drizzle:seed": "tsx ./src/db/seed.ts",
+    "migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

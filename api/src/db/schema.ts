@@ -15,17 +15,6 @@ export const User = mysqlTable("User", {
   role: tinyint({ unsigned: true }).default(1).notNull(),
   status: tinyint({ unsigned: true }).default(1).notNull(),
 });
-export const Comment = mysqlTable("comment", {
-  id: int({ unsigned: true }).autoincrement().primaryKey(),
-  reviewId: int({ unsigned: true })
-    .notNull()
-    .references(() => Review.id),
-  userId: int({ unsigned: true })
-    .notNull()
-    .references(() => User.id),
-  content: varchar({ length: 255 }).notNull(),
-  date: timestamp("date").notNull().defaultNow(),
-});
 export const Tag = mysqlTable("tag", {
   id: int({ unsigned: true }).autoincrement().primaryKey(),
   name: varchar({ length: 255 }).notNull(),
@@ -42,16 +31,6 @@ export const SubjectTag = mysqlTable("subject_tag", {
     .primaryKey()
     .references(() => Tag.id),
 });
-export const Rate = mysqlTable("rate", {
-  id: int({ unsigned: true }).autoincrement().primaryKey(),
-  reviewId: int({ unsigned: true })
-    .primaryKey()
-    .references(() => Review.id),
-  userId: int({ unsigned: true })
-    .primaryKey()
-    .references(() => User.id),
-  rate: tinyint({ unsigned: true }).notNull(),
-});
 export const Review = mysqlTable("review", {
   id: int({ unsigned: true }).autoincrement().primaryKey(),
   userId: int({ unsigned: true })
@@ -61,6 +40,25 @@ export const Review = mysqlTable("review", {
     .notNull()
     .references(() => Subject.id),
   title: varchar({ length: 255 }).notNull(),
+  content: varchar({ length: 255 }).notNull(),
+  date: timestamp("date").notNull().defaultNow(),
+});
+
+export const Rate = mysqlTable("rate", {
+  id: int({ unsigned: true }).autoincrement().primaryKey(),
+  reviewId: int({ unsigned: true })
+    .references(() => Review.id),
+  userId: int({ unsigned: true })
+    .references(() => User.id),
+  rate: tinyint({ unsigned: true }).notNull(),
+});
+
+export const Comment = mysqlTable("comment", {
+  id: int({ unsigned: true }).autoincrement().primaryKey(),
+  reviewId: int({ unsigned: true }).notNull().references(() => Review.id),
+  userId: int({ unsigned: true })
+    .notNull()
+    .references(() => User.id),
   content: varchar({ length: 255 }).notNull(),
   date: timestamp("date").notNull().defaultNow(),
 });
