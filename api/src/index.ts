@@ -2,7 +2,12 @@ import express, { Express, Request, Response } from "express";
 // import dotenv from "dotenv";
 // dotenv.config();
 import db from "./db";
-import { User } from "./db/schema";
+import { User } from "./db/schema"
+import { Subject } from "./db/schema";
+import { Tag } from "./db/schema";
+import { SubjectTag } from "./db/schema";
+import { Reviews } from "./db/schema";
+
 
 import cors from "cors";
 
@@ -22,6 +27,27 @@ app.get("/api/users", async (req: Request, res: Response) => {
   let users = await db.select().from(User); 
   res.json(users);
 });
+app.get("/api/Subject", async (req: Request, res: Response) => {
+  let subjects = await db.select().from(Subject); 
+  res.json(subjects);
+});
+
+app.get("/api/Tag", async (req: Request, res: Response) => {
+  let tags = await db.select().from(Tag); 
+  res.json(tags);
+});
+
+app.get("/api/SubjectTag", async (req: Request, res: Response) => {
+  let subjectTags = await db.select().from(SubjectTag); 
+  res.json(subjectTags);
+});
+
+app.get("/api/reviews", async (req: Request, res: Response) => {
+  let reviews = await db.select().from(Reviews); 
+  res.json(reviews);
+});
+
+
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
