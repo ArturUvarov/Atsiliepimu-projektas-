@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "50a97ba5-9748-4e58-9319-e08b362935cf",
+  "id": "dd4490c7-ce69-4381-a8ff-963f91e031c1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "comment": {
-      "name": "comment",
+    "Comment": {
+      "name": "Comment",
       "columns": {
         "id": {
           "name": "id",
@@ -14,13 +14,6 @@
           "notNull": true,
           "autoincrement": true
         },
-        "bywhom": {
-          "name": "bywhom",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
         "content": {
           "name": "content",
           "type": "varchar(255)",
@@ -28,8 +21,8 @@
           "notNull": true,
           "autoincrement": false
         },
-        "posted_at": {
-          "name": "posted_at",
+        "date": {
+          "name": "date",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
@@ -40,8 +33,134 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "comment_id": {
-          "name": "comment_id",
+        "Comment_id": {
+          "name": "Comment_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "Subject": {
+      "name": "Subject",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Subject_id": {
+          "name": "Subject_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "SubjectTag": {
+      "name": "SubjectTag",
+      "columns": {
+        "subject_id": {
+          "name": "subject_id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tag_id": {
+          "name": "tag_id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "SubjectTag_subject_id_Subject_id_fk": {
+          "name": "SubjectTag_subject_id_Subject_id_fk",
+          "tableFrom": "SubjectTag",
+          "tableTo": "Subject",
+          "columnsFrom": [
+            "subject_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "SubjectTag_tag_id_Tag_id_fk": {
+          "name": "SubjectTag_tag_id_Tag_id_fk",
+          "tableFrom": "SubjectTag",
+          "tableTo": "Tag",
+          "columnsFrom": [
+            "tag_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "SubjectTag_subject_id": {
+          "name": "SubjectTag_subject_id",
+          "columns": [
+            "subject_id"
+          ]
+        },
+        "SubjectTag_tag_id": {
+          "name": "SubjectTag_tag_id",
+          "columns": [
+            "tag_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "Tag": {
+      "name": "Tag",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Tag_id": {
+          "name": "Tag_id",
           "columns": [
             "id"
           ]
