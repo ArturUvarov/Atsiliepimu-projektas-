@@ -3,6 +3,9 @@ import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { User } from "./schema";
 import { Subject } from "./schema";
+import { Tag } from "./schema";
+import { SubjectTag } from "./schema";
+import { Reviews } from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 
@@ -78,6 +81,23 @@ async function seedUsers() {
   await db
   .insert(Subject)
   .values({ name: "Sub"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  console.log("Seeding completed.");
+
+  await db
+  .insert(Tag)
+  .values({ name: "Tag"})
+  .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  console.log("Seeding completed.");
+
+  await db
+  .insert(SubjectTag)
+  .values({ subjectId: 1, tagId: 1})
+  console.log("Seeding completed.");
+
+  await db
+  .insert(Reviews)
+  .values({ userId: 1, subjectId: 1, title: "Title", content: "Content"})
   .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Seeding completed.");
 }

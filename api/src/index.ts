@@ -1,6 +1,12 @@
 import express, { Express, Request, Response } from "express";
 import db from "./db";
-import { User,Comment,Subject,SubjectTag,Tag,Rate,Review,} from "./db/schema";
+import { User } from "./db/schema"
+import { Subject } from "./db/schema";
+import { Tag } from "./db/schema";
+import { SubjectTag } from "./db/schema";
+import { Reviews } from "./db/schema";
+
+
 import cors from "cors";
 const app: Express = express();
 
@@ -14,31 +20,30 @@ app.get("/api/", (req: Request, res: Response) => {
 
 // Fetch all users
 app.get("/api/users", async (req: Request, res: Response) => {
-  try{ let users = await db.select().from(User); res.json(users);} catch (error) {console.error("Error we getting:",error);}});
+  let users = await db.select().from(User); 
+  res.json(users);
+});
+app.get("/api/Subject", async (req: Request, res: Response) => {
+  let subjects = await db.select().from(Subject); 
+  res.json(subjects);
+});
 
-// Fetch all comments
-app.get("/api/comment", async (req: Request, res: Response) => {
-  try{ let comment = await db.select().from(Comment); res.json(comment);} catch (error) {console.error("Error we getting:",error);}});
+app.get("/api/Tag", async (req: Request, res: Response) => {
+  let tags = await db.select().from(Tag); 
+  res.json(tags);
+});
 
-// Fetch all subjects
-app.get("/api/subject", async (req: Request, res: Response) => {
-  try{ let subject = await db.select().from(Subject); res.json(subject);} catch (error) {console.error("Error we getting:",error);}});
+app.get("/api/SubjectTag", async (req: Request, res: Response) => {
+  let subjectTags = await db.select().from(SubjectTag); 
+  res.json(subjectTags);
+});
 
-// Fetch all tags
-app.get("/api/tag", async (req: Request, res: Response) => {
-  try{ let tag = await db.select().from(Tag); res.json(tag);} catch (error) {console.error("Error we getting:",error);}});
+app.get("/api/reviews", async (req: Request, res: Response) => {
+  let reviews = await db.select().from(Reviews); 
+  res.json(reviews);
+});
 
-// Fetch all subject tags
-app.get("/api/subjectTag", async (req: Request, res: Response) => {
-  try{ let subjectTag = await db.select().from(SubjectTag); res.json(subjectTag);} catch (error) {console.error("Error we getting:",error);}});
 
-  // Fetch all rates
-app.get("/api/rate", async (req: Request, res: Response) => {
-  try{ let rate = await db.select().from(Rate); res.json(rate);} catch (error) {console.error("Error we getting:",error);}});
-
-// Fetch all reviews
-app.get("/api/review", async (req: Request, res: Response) => {
-  try{ let review = await db.select().from(Review); res.json(review);} catch (error) {console.error("Error we getting:",error);}});
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
