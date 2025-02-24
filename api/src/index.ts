@@ -7,6 +7,8 @@ import { Subject } from "./db/schema";
 import { Tag } from "./db/schema";
 import { SubjectTag } from "./db/schema";
 import { Reviews } from "./db/schema";
+import { Comment } from "./db/schema";
+import { Rate } from "./db/schema";
 
 
 import cors from "cors";
@@ -45,6 +47,16 @@ app.get("/api/SubjectTag", async (req: Request, res: Response) => {
 app.get("/api/reviews", async (req: Request, res: Response) => {
   let reviews = await db.select().from(Reviews); 
   res.json(reviews);
+});
+
+app.get("/api/comment", async (req: Request, res: Response) => {
+  let comments = await db.select().from(Comment); 
+  res.json(comments);
+});
+
+app.get("/api/rate", async (req: Request, res: Response) => {
+  let rates = await db.select().from(Rate); 
+  res.json(rates);
 });
 
 
