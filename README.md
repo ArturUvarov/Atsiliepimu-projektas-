@@ -58,23 +58,6 @@ After the containers are running:
 npm run drizzle:seed
 ```
 
-## 💻 Local Development
-
-1. Navigate to the project directory:
-```bash
-cd Atsiliepimu-projektas-
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
 ## 🔧 Configuration
 
 The project uses the following ports:
@@ -85,10 +68,10 @@ The project uses the following ports:
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+1. Clone the repository
+2. Create your feature branch (`git checkout`)
+3. Commit your changes (`git commit -m 'Commit'`)
+4. Push to the branch (`git push`)
 5. Open a Pull Request
 
 ## 📜 License
