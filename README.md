@@ -1,70 +1,85 @@
-# Atsiliepimu projektas
+# Review Management System
 
-Tai yra 3-jų menesių full-stack projektas
+A 3-month full-stack project for managing and displaying reviews.
 
-## 🚀 Pagrindinė dalis
+## 🚀 Tech Stack
 
-- **Frontend**: React + Tailwindcss
-- **Backend**: Express.js + Node.js + API
-- **Container**: Docker
-- **Database**: MySQL, Drizzle ORM
+- **Frontend**: 
+  - React
+  - TailwindCSS
+- **Backend**: 
+  - Express.js
+  - Node.js
+- **Database**: 
+  - MySQL
+  - Drizzle ORM
+- **Containerization**: 
+  - Docker
 
-## 🛠️ Būtinos sąlygos
+## 📋 Prerequisites
 
-- Jūsų kompiuteryje įdiegtas „Docker desktop“ programa
-- Node.js
-- npm paketo tvarkyklė
+Before you begin, ensure you have the following installed:
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- npm (comes with Node.js)
 
-## 🚦 Darbo pradžia
+## 🚀 Getting Started
 
-1. Klonuoti "Github" saugyklą:
+### 1. Clone the Repository
+
 ```bash
-ssh versia:
+# Using HTTPS
+git clone https://github.com/ArturUvarov/Atsiliepimu-projektas-.git
 
-git clone <git@github.com:ArturUvarov/Atsiliepimu-projektas-.git>
-
-https versia:
-
-git clone <https://github.com/ArturUvarov/Atsiliepimu-projektas-.git>
+# Using SSH
+git clone git@github.com:ArturUvarov/Atsiliepimu-projektas-.git
 ```
 
-2. Paleiskite programą naudodami „Docker compose.yaml faila“:
+### 2. Launch the Application
+
+Start all services using Docker Compose:
+
 ```bash
-docker-compose up 
+docker-compose up
 ```
 
-Svetainę bus galima rasti adresu:
-- http://localhost/8080
+The application will be available at:
+- Frontend: http://localhost:8080
 
+### 3. Seed the Database
 
-3. Dirbtinių duomenų užpildymas:
+After the containers are running:
+1. Open Docker Desktop
+2. Locate the API container
+3. Go to the 'Exec' tab
+4. Run the following command:
 
-Paleidus programą, reikia atsidaryti Docker Desktop esančią api konteinerio dalį, nueiti į Exec tab'ą ir parašyti komandą:
 ```bash
 npm run drizzle:seed
 ```
 
+## 🔧 Configuration
 
-## 🤖 Diegimo procesas
-
-1. Įveskite į katalogą
-```bash
-cd path/to/your/catalogue
-```
-
-2. Įdiegti paketus
-```bash
-npm install
-```
-
-3. Paleiskite serverį:
-```bash
-npm run dev
-```
-
-## Viskas!
+The project uses the following ports:
+- Frontend: 8080
+- Backend API: 3000
+- MySQL: 3306
 
 
-## 📜 Licencija
+## 🤝 Contributing
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Clone the repository
+2. Create your feature branch (`git checkout`)
+3. Commit your changes (`git commit -m 'Commit'`)
+4. Push to the branch (`git push`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+Artūr Uvarov - [GitHub](https://github.com/ArturUvarov)
+
+Project Link: [https://github.com/ArturUvarov/Atsiliepimu-projektas-](https://github.com/ArturUvarov/Atsiliepimu-projektas-)
