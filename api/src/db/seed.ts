@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { User, Comment, Tag, Subject, SubjectTag } from "./schema";
+import { User, Comment, Tag, Subject, SubjectTag, Rate } from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 const db = drizzle({ connection: { uri: process.env.DATABASE_URL } });
@@ -112,6 +112,23 @@ async function main() {
       Array.from({ length: 50 }).map((_, index) => ({
         subject_id: commentCount + index + 1,
         tag_id: commentCount + index + 1,
+      }))
+    );
+  }
+  console.log("Seeding completed.");
+  await db.insert(Rate).values({
+    id: 1,
+    rate: 5,
+  });
+  console.log("Created comment: ", "Hello World!");
+  const rateCountResult = await db.select({ count: sql`COUNT(*)` }).from(Rate);
+  const rateCount = rateCountResult[0]?.count as number;
+  if (rateCount < 10) {
+    console.log("Creating 50 random comments...");
+    await db.insert(Rate).values(
+      Array.from({ length: 50 }).map((_, index) => ({
+        id: commentCount + index + 1,
+        rate: faker.number.int({ min: 1, max: 5 }),
       }))
     );
   }

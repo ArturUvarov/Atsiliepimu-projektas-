@@ -5,6 +5,12 @@ CREATE TABLE `Comment` (
 	CONSTRAINT `Comment_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
+CREATE TABLE `Rate` (
+	`id` int unsigned AUTO_INCREMENT NOT NULL,
+	`rate` tinyint NOT NULL,
+	CONSTRAINT `Rate_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
 CREATE TABLE `Subject` (
 	`id` int unsigned AUTO_INCREMENT NOT NULL,
 	`name` varchar(255) NOT NULL,

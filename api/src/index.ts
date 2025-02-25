@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import db from "./db";
-import { User, Comment, Subject, SubjectTag, Tag } from "./db/schema";
+import { User, Comment, Subject, SubjectTag, Tag, Rate } from "./db/schema";
 import cors from "cors";
 const app: Express = express();
 app.use(cors());
@@ -27,6 +27,10 @@ app.get("/api/tag", async (req: Request, res: Response) => {
 app.get("/api/subjectTag", async (req: Request, res: Response) => {
   let subjectTag = await db.select().from(SubjectTag);
   res.json(subjectTag);
+});
+app.get("/api/rate", async (req: Request, res: Response) => {
+  let rate = await db.select().from(Rate);
+  res.json(rate);
 });
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

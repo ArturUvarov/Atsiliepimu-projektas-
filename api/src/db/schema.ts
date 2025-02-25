@@ -36,3 +36,7 @@ export const SubjectTag = mysqlTable("SubjectTag", {
     .primaryKey()
     .references(() => Tag.id),
 });
+export const Rate = mysqlTable("Rate", {
+  id: int({ unsigned: true }).autoincrement().primaryKey(),
+  rate: tinyint().notNull(),
+});
