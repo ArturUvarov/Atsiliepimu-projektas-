@@ -10,7 +10,6 @@ A 3-month full-stack project for managing and displaying reviews.
 - **Backend**: 
   - Express.js
   - Node.js
-  - RESTful API
 - **Database**: 
   - MySQL
   - Drizzle ORM
@@ -83,11 +82,6 @@ The project uses the following ports:
 - Backend API: 3000
 - MySQL: 3306
 
-## 🧪 Testing
-
-```bash
-npm run test
-```
 
 ## 🤝 Contributing
 
