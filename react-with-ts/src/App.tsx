@@ -1,9 +1,13 @@
-import Homepage from "./pages/Homepage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./Homepage/Homepage";
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      <Homepage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/homepage" element={<Homepage />} />
+      </Routes>
+    </Router>
   );
 }
 export default App;

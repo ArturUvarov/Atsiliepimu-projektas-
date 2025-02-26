@@ -51,7 +51,6 @@ async function main() {
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
 
-  // Insert admin user
   await db.insert(User).values({
     username: "admin",
     email: "admin@example.com",
@@ -243,5 +242,4 @@ async function seedRates() {
   console.log("Rates seeding completed.");
 }
 
-// Execute the main function
 main();
