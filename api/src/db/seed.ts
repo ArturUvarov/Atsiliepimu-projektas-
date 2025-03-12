@@ -60,24 +60,12 @@ async function main() {
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
 
-<<<<<<< HEAD
-  await db
-    .insert(User)
-    .values({
-      username: "admin",
-      email: "admin@example.com",
-      password,
-      status: 2,
-    })
-    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
-=======
   await db.insert(User).values({
     username: "admin",
     email: "admin@example.com",
     password,
     status: 2,
   }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
->>>>>>> main
   console.log("Created user: admin@example.com");
 
   const userCountResult = await db.select({ count: sql`COUNT(*)` }).from(User);
@@ -133,8 +121,8 @@ async function seedReviews() {
     .insert(Reviews)
     .values({
       id: 1,
-      user_id: 1,
-      subject_id: 1,
+      userId: 1,
+      subjectId: 1,
       title: "First review",
       content: "First review content",
       date: new Date("2022-01-01 00:00:00"),
@@ -152,8 +140,8 @@ async function seedReviews() {
     await db.insert(Reviews).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: reviewCount + index + 1,
-        user_id: faker.number.int({ min: 1, max: 50 }),
-        subject_id: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
+        subjectId: faker.number.int({ min: 1, max: 50 }),
         title: faker.lorem.paragraph(1),
         content: faker.lorem.paragraph(2),
         date: faker.date.recent(),
@@ -170,8 +158,8 @@ async function seedComments() {
     .insert(Comment)
     .values({
       id: 1,
-      review_id: 1,
-      user_id: 1,
+      reviewId: 1,
+      userId: 1,
       content: "First comment",
       date: new Date("2022-01-01 00:00:00"),
     })
@@ -188,8 +176,8 @@ async function seedComments() {
     await db.insert(Comment).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: commentCount + index + 1,
-        review_id: faker.number.int({ min: 1, max: 50 }),
-        user_id: faker.number.int({ min: 1, max: 50 }),
+        reviewId: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
         content: faker.lorem.paragraph(2),
         date: faker.date.recent(),
       }))
@@ -245,12 +233,12 @@ async function seedSubjectTags() {
     .insert(SubjectTag)
     .values(
       subjectTags.map(([subjectId, tagId]) => ({
-        subject_id: subjectId,
-        tag_id: tagId,
+        subjectId: subjectId,
+        tagId: tagId,
       }))
     )
     .onDuplicateKeyUpdate({
-      set: { subject_id: sql`subject_id`, tag_id: sql`tag_id` },
+      set: { subjectId: sql`subjectId`, tagId: sql`tagId` },
     });
 
   console.log("SubjectTags seeding completed.");
@@ -262,8 +250,8 @@ async function seedRates() {
     .insert(Rate)
     .values({
       id: 1,
-      user_id: 1,
-      review_id: 1,
+      userId: 1,
+      reviewId: 1,
       rate: 5,
     })
     .onDuplicateKeyUpdate({ set: { id: sql`id` } });
@@ -277,8 +265,8 @@ async function seedRates() {
     await db.insert(Rate).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: rateCount + index + 1,
-        user_id: faker.number.int({ min: 1, max: 50 }),
-        review_id: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
+        reviewId: faker.number.int({ min: 1, max: 50 }),
         rate: faker.number.int({ min: 1, max: 5 }),
       }))
     );
