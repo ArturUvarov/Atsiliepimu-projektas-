@@ -55,6 +55,7 @@ async function main() {
   console.log("All seeding completed successfully.");
 }
 
+// ================================================================================
 // Function to seed users
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
@@ -87,7 +88,9 @@ async function seedUsers() {
 
   console.log("Users seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed subjects
 async function seedSubject() {
   await db
@@ -116,15 +119,17 @@ async function seedSubject() {
 
   console.log("Subjects seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed reviews
 async function seedReviews() {
   await db
     .insert(Reviews)
     .values({
       id: 1,
-      user_id: 1,
-      subject_id: 1,
+      userId: 1,
+      subjectId: 1,
       title: "First review",
       content: "First review content",
       date: new Date("2022-01-01 00:00:00"),
@@ -142,8 +147,8 @@ async function seedReviews() {
     await db.insert(Reviews).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: reviewCount + index + 1,
-        user_id: faker.number.int({ min: 1, max: 50 }),
-        subject_id: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
+        subjectId: faker.number.int({ min: 1, max: 50 }),
         title: faker.lorem.paragraph(1),
         content: faker.lorem.paragraph(2),
         date: faker.date.recent(),
@@ -153,15 +158,17 @@ async function seedReviews() {
 
   console.log("Reviews seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed comments
 async function seedComments() {
   await db
     .insert(Comment)
     .values({
       id: 1,
-      review_id: 1,
-      user_id: 1,
+      reviewId: 1,
+      userId: 1,
       content: "First comment",
       date: new Date("2022-01-01 00:00:00"),
     })
@@ -178,8 +185,8 @@ async function seedComments() {
     await db.insert(Comment).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: commentCount + index + 1,
-        review_id: faker.number.int({ min: 1, max: 50 }),
-        user_id: faker.number.int({ min: 1, max: 50 }),
+        reviewId: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
         content: faker.lorem.paragraph(2),
         date: faker.date.recent(),
       }))
@@ -188,7 +195,9 @@ async function seedComments() {
 
   console.log("Comments seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed tags
 async function seedTags() {
   await db
@@ -215,7 +224,9 @@ async function seedTags() {
 
   console.log("Tags seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed subject tags
 async function seedSubjectTags() {
   const generateSubjectTags = (numTags: number): [number, number][] => {
@@ -235,25 +246,27 @@ async function seedSubjectTags() {
     .insert(SubjectTag)
     .values(
       subjectTags.map(([subjectId, tagId]) => ({
-        subject_id: subjectId,
-        tag_id: tagId,
+        subjectId: subjectId,
+        tagId: tagId,
       }))
     )
     .onDuplicateKeyUpdate({
-      set: { subject_id: sql`subject_id`, tag_id: sql`tag_id` },
+      set: { subjectId: sql`subjectId`, tagId: sql`tagId` },
     });
 
   console.log("SubjectTags seeding completed.");
 }
+// ================================================================================
 
+// ================================================================================
 // Function to seed rates
 async function seedRates() {
   await db
     .insert(Rate)
     .values({
       id: 1,
-      user_id: 1,
-      review_id: 1,
+      userId: 1,
+      reviewId: 1,
       rate: 5,
     })
     .onDuplicateKeyUpdate({ set: { id: sql`id` } });
@@ -267,8 +280,8 @@ async function seedRates() {
     await db.insert(Rate).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: rateCount + index + 1,
-        user_id: faker.number.int({ min: 1, max: 50 }),
-        review_id: faker.number.int({ min: 1, max: 50 }),
+        userId: faker.number.int({ min: 1, max: 50 }),
+        reviewId: faker.number.int({ min: 1, max: 50 }),
         rate: faker.number.int({ min: 1, max: 5 }),
       }))
     );
@@ -276,5 +289,5 @@ async function seedRates() {
 
   console.log("Rates seeding completed.");
 }
-
+// ================================================================================
 main();
