@@ -56,11 +56,9 @@ async function main() {
 }
 
 // Function to seed users
-// Function to seed users
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
 
-<<<<<<< HEAD
   await db
     .insert(User)
     .values({
@@ -70,14 +68,6 @@ async function seedUsers() {
       status: 2,
     })
     .onDuplicateKeyUpdate({ set: { id: sql`id` } });
-=======
-  await db.insert(User).values({
-    username: "admin",
-    email: "admin@example.com",
-    password,
-    status: 2,
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
->>>>>>> main
   console.log("Created user: admin@example.com");
 
   const userCountResult = await db.select({ count: sql`COUNT(*)` }).from(User);
