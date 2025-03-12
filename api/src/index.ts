@@ -2,6 +2,8 @@ import express, { Express, Request, Response } from "express";
 // import db from "./db";
 // import { User } from "./db/schema";
 import UserRoutes from "./routes/UserRoutes";
+import TagRoutes from "./routes/TagRoutes";
+import SubjectRoutes from "./routes/SubjectRoutes";
 // import { Subject } from "./db/schema";
 // import { Tag } from "./db/schema";
 // import { SubjectTag } from "./db/schema";
@@ -23,6 +25,12 @@ app.get("/api/", (req: Request, res: Response) => {
 
 // Fetch all users
 app.use("/api", UserRoutes);
+
+// Fetch all tags
+app.use("/api", TagRoutes);
+
+// Fetch all subjects
+app.use("/api", SubjectRoutes);
 
 // app.get("/api/Subject", async (req: Request, res: Response) => {
 //   let subjects = await db.select().from(Subject);
