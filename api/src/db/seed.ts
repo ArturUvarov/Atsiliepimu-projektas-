@@ -60,15 +60,12 @@ async function main() {
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
 
-  await db
-    .insert(User)
-    .values({
-      username: "admin",
-      email: "admin@example.com",
-      password,
-      status: 2,
-    })
-    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  await db.insert(User).values({
+    username: "admin",
+    email: "admin@example.com",
+    password,
+    status: 2,
+  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created user: admin@example.com");
 
   const userCountResult = await db.select({ count: sql`COUNT(*)` }).from(User);
