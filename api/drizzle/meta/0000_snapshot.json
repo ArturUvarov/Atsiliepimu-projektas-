@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "2fd5b6bd-572d-4392-bfea-d24e85e7818a",
+  "id": "2da0f936-5ea5-4842-9beb-67f81ed1f3ac",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "Comment": {
@@ -14,25 +14,25 @@
           "notNull": true,
           "autoincrement": true
         },
-        "review_id": {
-          "name": "review_id",
+        "reviewId": {
+          "name": "reviewId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "int unsigned",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "content": {
           "name": "content",
-          "type": "varchar(255)",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "date": {
@@ -46,12 +46,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Comment_review_id_Review_id_fk": {
-          "name": "Comment_review_id_Review_id_fk",
+        "Comment_reviewId_Reviews_id_fk": {
+          "name": "Comment_reviewId_Reviews_id_fk",
           "tableFrom": "Comment",
-          "tableTo": "Review",
+          "tableTo": "Reviews",
           "columnsFrom": [
-            "review_id"
+            "reviewId"
           ],
           "columnsTo": [
             "id"
@@ -59,12 +59,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "Comment_user_id_User_id_fk": {
-          "name": "Comment_user_id_User_id_fk",
+        "Comment_userId_User_id_fk": {
+          "name": "Comment_userId_User_id_fk",
           "tableFrom": "Comment",
           "tableTo": "User",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -94,15 +94,15 @@
           "notNull": true,
           "autoincrement": true
         },
-        "review_id": {
-          "name": "review_id",
+        "reviewId": {
+          "name": "reviewId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
@@ -110,7 +110,7 @@
         },
         "rate": {
           "name": "rate",
-          "type": "tinyint",
+          "type": "tinyint unsigned",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -118,12 +118,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Rate_review_id_Review_id_fk": {
-          "name": "Rate_review_id_Review_id_fk",
+        "Rate_reviewId_Reviews_id_fk": {
+          "name": "Rate_reviewId_Reviews_id_fk",
           "tableFrom": "Rate",
-          "tableTo": "Review",
+          "tableTo": "Reviews",
           "columnsFrom": [
-            "review_id"
+            "reviewId"
           ],
           "columnsTo": [
             "id"
@@ -131,12 +131,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "Rate_user_id_User_id_fk": {
-          "name": "Rate_user_id_User_id_fk",
+        "Rate_userId_User_id_fk": {
+          "name": "Rate_userId_User_id_fk",
           "tableFrom": "Rate",
           "tableTo": "User",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -156,8 +156,8 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "Review": {
-      "name": "Review",
+    "Reviews": {
+      "name": "Reviews",
       "columns": {
         "id": {
           "name": "id",
@@ -166,15 +166,15 @@
           "notNull": true,
           "autoincrement": true
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "subject_id": {
-          "name": "subject_id",
+        "subjectId": {
+          "name": "subjectId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
@@ -189,9 +189,9 @@
         },
         "content": {
           "name": "content",
-          "type": "varchar(255)",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "date": {
@@ -205,12 +205,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Review_user_id_User_id_fk": {
-          "name": "Review_user_id_User_id_fk",
-          "tableFrom": "Review",
+        "Reviews_userId_User_id_fk": {
+          "name": "Reviews_userId_User_id_fk",
+          "tableFrom": "Reviews",
           "tableTo": "User",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -218,12 +218,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "Review_subject_id_Subject_id_fk": {
-          "name": "Review_subject_id_Subject_id_fk",
-          "tableFrom": "Review",
+        "Reviews_subjectId_Subject_id_fk": {
+          "name": "Reviews_subjectId_Subject_id_fk",
+          "tableFrom": "Reviews",
           "tableTo": "Subject",
           "columnsFrom": [
-            "subject_id"
+            "subjectId"
           ],
           "columnsTo": [
             "id"
@@ -233,8 +233,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "Review_id": {
-          "name": "Review_id",
+        "Reviews_id": {
+          "name": "Reviews_id",
           "columns": [
             "id"
           ]
@@ -277,15 +277,15 @@
     "SubjectTag": {
       "name": "SubjectTag",
       "columns": {
-        "subject_id": {
-          "name": "subject_id",
+        "subjectId": {
+          "name": "subjectId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "tag_id": {
-          "name": "tag_id",
+        "tagId": {
+          "name": "tagId",
           "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
@@ -294,12 +294,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "SubjectTag_subject_id_Subject_id_fk": {
-          "name": "SubjectTag_subject_id_Subject_id_fk",
+        "SubjectTag_subjectId_Subject_id_fk": {
+          "name": "SubjectTag_subjectId_Subject_id_fk",
           "tableFrom": "SubjectTag",
           "tableTo": "Subject",
           "columnsFrom": [
-            "subject_id"
+            "subjectId"
           ],
           "columnsTo": [
             "id"
@@ -307,12 +307,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "SubjectTag_tag_id_Tag_id_fk": {
-          "name": "SubjectTag_tag_id_Tag_id_fk",
+        "SubjectTag_tagId_Tag_id_fk": {
+          "name": "SubjectTag_tagId_Tag_id_fk",
           "tableFrom": "SubjectTag",
           "tableTo": "Tag",
           "columnsFrom": [
-            "tag_id"
+            "tagId"
           ],
           "columnsTo": [
             "id"
@@ -322,16 +322,16 @@
         }
       },
       "compositePrimaryKeys": {
-        "SubjectTag_subject_id": {
-          "name": "SubjectTag_subject_id",
+        "SubjectTag_subjectId": {
+          "name": "SubjectTag_subjectId",
           "columns": [
-            "subject_id"
+            "subjectId"
           ]
         },
-        "SubjectTag_tag_id": {
-          "name": "SubjectTag_tag_id",
+        "SubjectTag_tagId": {
+          "name": "SubjectTag_tagId",
           "columns": [
-            "tag_id"
+            "tagId"
           ]
         }
       },

@@ -1,7 +1,15 @@
 import "dotenv/config";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { User, Comment, Tag, Subject, SubjectTag, Rate, Review } from "./schema";
+import {
+  User,
+  Comment,
+  Tag,
+  Subject,
+  SubjectTag,
+  Rate,
+  Reviews,
+} from "./schema";
 import bcrypt from "bcrypt";
 import { faker } from "@faker-js/faker";
 
@@ -17,7 +25,7 @@ async function main() {
   // ==============================
   // SEED SUBJECTS
   // ==============================
-  await seedSubjects();
+  await seedSubject();
 
   // ==============================
   // SEED REVIEWS
@@ -48,15 +56,28 @@ async function main() {
 }
 
 // Function to seed users
+// Function to seed users
 async function seedUsers() {
   const password = await bcrypt.hash("password", 10);
 
+<<<<<<< HEAD
+  await db
+    .insert(User)
+    .values({
+      username: "admin",
+      email: "admin@example.com",
+      password,
+      status: 2,
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+=======
   await db.insert(User).values({
     username: "admin",
     email: "admin@example.com",
     password,
     status: 2,
   }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+>>>>>>> main
   console.log("Created user: admin@example.com");
 
   const userCountResult = await db.select({ count: sql`COUNT(*)` }).from(User);
@@ -78,14 +99,19 @@ async function seedUsers() {
 }
 
 // Function to seed subjects
-async function seedSubjects() {
-  await db.insert(Subject).values({
-    id: 1,
-    name: "First subject",
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+async function seedSubject() {
+  await db
+    .insert(Subject)
+    .values({
+      id: 1,
+      name: "First subject",
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created subject: First subject");
 
-  const subjectCountResult = await db.select({ count: sql`COUNT(*)` }).from(Subject);
+  const subjectCountResult = await db
+    .select({ count: sql`COUNT(*)` })
+    .from(Subject);
   const subjectCount = subjectCountResult[0]?.count as number;
 
   if (subjectCount < 10) {
@@ -103,22 +129,27 @@ async function seedSubjects() {
 
 // Function to seed reviews
 async function seedReviews() {
-  await db.insert(Review).values({
-    id: 1,
-    user_id: 1,
-    subject_id: 1,
-    title: "First review",
-    content: "First review content",
-    date: new Date("2022-01-01 00:00:00"),
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  await db
+    .insert(Reviews)
+    .values({
+      id: 1,
+      user_id: 1,
+      subject_id: 1,
+      title: "First review",
+      content: "First review content",
+      date: new Date("2022-01-01 00:00:00"),
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created review: First review");
 
-  const reviewCountResult = await db.select({ count: sql`COUNT(*)` }).from(Review);
+  const reviewCountResult = await db
+    .select({ count: sql`COUNT(*)` })
+    .from(Reviews);
   const reviewCount = reviewCountResult[0]?.count as number;
 
   if (reviewCount < 10) {
     console.log("Creating 50 random reviews...");
-    await db.insert(Review).values(
+    await db.insert(Reviews).values(
       Array.from({ length: 50 }).map((_, index) => ({
         id: reviewCount + index + 1,
         user_id: faker.number.int({ min: 1, max: 50 }),
@@ -135,16 +166,21 @@ async function seedReviews() {
 
 // Function to seed comments
 async function seedComments() {
-  await db.insert(Comment).values({
-    id: 1,
-    review_id: 1,
-    user_id: 1,
-    content: "First comment",
-    date: new Date("2022-01-01 00:00:00"),
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  await db
+    .insert(Comment)
+    .values({
+      id: 1,
+      review_id: 1,
+      user_id: 1,
+      content: "First comment",
+      date: new Date("2022-01-01 00:00:00"),
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created comment: First comment");
 
-  const commentCountResult = await db.select({ count: sql`COUNT(*)` }).from(Comment);
+  const commentCountResult = await db
+    .select({ count: sql`COUNT(*)` })
+    .from(Comment);
   const commentCount = commentCountResult[0]?.count as number;
 
   if (commentCount < 10) {
@@ -165,10 +201,13 @@ async function seedComments() {
 
 // Function to seed tags
 async function seedTags() {
-  await db.insert(Tag).values({
-    id: 1,
-    name: "First tag",
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  await db
+    .insert(Tag)
+    .values({
+      id: 1,
+      name: "First tag",
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created tag: First tag");
 
   const tagCountResult = await db.select({ count: sql`COUNT(*)` }).from(Tag);
@@ -202,26 +241,32 @@ async function seedSubjectTags() {
   const subjectTags = generateSubjectTags(50);
   console.log("Seeding SubjectTags...");
 
-  await db.insert(SubjectTag).values(
-    subjectTags.map(([subjectId, tagId]) => ({
-      subject_id: subjectId,
-      tag_id: tagId,
-    }))
-  ).onDuplicateKeyUpdate({
-    set: { subject_id: sql`subject_id`, tag_id: sql`tag_id` },
-  });
+  await db
+    .insert(SubjectTag)
+    .values(
+      subjectTags.map(([subjectId, tagId]) => ({
+        subject_id: subjectId,
+        tag_id: tagId,
+      }))
+    )
+    .onDuplicateKeyUpdate({
+      set: { subject_id: sql`subject_id`, tag_id: sql`tag_id` },
+    });
 
   console.log("SubjectTags seeding completed.");
 }
 
 // Function to seed rates
 async function seedRates() {
-  await db.insert(Rate).values({
-    id: 1,
-    user_id: 1,
-    review_id: 1,
-    rate: 5,
-  }).onDuplicateKeyUpdate({ set: { id: sql`id` } });
+  await db
+    .insert(Rate)
+    .values({
+      id: 1,
+      user_id: 1,
+      review_id: 1,
+      rate: 5,
+    })
+    .onDuplicateKeyUpdate({ set: { id: sql`id` } });
   console.log("Created rate for review 1");
 
   const rateCountResult = await db.select({ count: sql`COUNT(*)` }).from(Rate);
