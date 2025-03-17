@@ -30,7 +30,7 @@ import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
 export function Home() {
   return (
     <div className="mt-12">
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+      {/* <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
         {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
@@ -47,8 +47,8 @@ export function Home() {
             }
           />
         ))}
-      </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+      </div> */}
+      {/* <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
         {statisticsChartsData.map((props) => (
           <StatisticsChart
             key={props.title}
@@ -64,17 +64,17 @@ export function Home() {
             }
           />
         ))}
-      </div>
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+      </div> */}
+      {/* <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
         <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
             className="m-0 flex items-center justify-between p-6"
-          >
-            <div>
-              <Typography variant="h6" color="blue-gray" className="mb-1">
+          > */}
+            {/* <div> */}
+              {/* <Typography variant="h6" color="blue-gray" className="mb-1">
                 Projects
               </Typography>
               <Typography
@@ -83,9 +83,9 @@ export function Home() {
               >
                 <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
                 <strong>30 done</strong> this month
-              </Typography>
-            </div>
-            <Menu placement="left-start">
+              </Typography> */}
+            {/* </div> */}
+            {/* <Menu placement="left-start">
               <MenuHandler>
                 <IconButton size="sm" variant="text" color="blue-gray">
                   <EllipsisVerticalIcon
@@ -100,9 +100,9 @@ export function Home() {
                 <MenuItem>Another Action</MenuItem>
                 <MenuItem>Something else here</MenuItem>
               </MenuList>
-            </Menu>
-          </CardHeader>
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
+            </Menu> */}
+          {/* </CardHeader> */}
+          {/* <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
@@ -191,9 +191,9 @@ export function Home() {
                 )}
               </tbody>
             </table>
-          </CardBody>
-        </Card>
-        <Card className="border border-blue-gray-100 shadow-sm">
+          </CardBody> */}
+        {/* </Card> */}
+        {/* <Card className="border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
@@ -249,8 +249,8 @@ export function Home() {
               )
             )}
           </CardBody>
-        </Card>
-      </div>
+        </Card> */}
+      {/* </div> */}
     </div>
   );
 }
