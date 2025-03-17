@@ -4,6 +4,11 @@ import express, { Express, Request, Response } from "express";
 import UserRoutes from "./routes/UserRoutes";
 import TagRoutes from "./routes/TagRoutes";
 import SubjectRoutes from "./routes/SubjectRoutes";
+import CommentRoutes from "./routes/CommentRoutes";
+import RateRoutes from "./routes/RateRoutes";
+import SubjectTagRoutes from "./routes/SubjectTagRoutes";
+import ReviewRoutes from "./routes/ReviewRoutes";
+// import { User } from "./db/schema";
 // import { Subject } from "./db/schema";
 // import { Tag } from "./db/schema";
 // import { SubjectTag } from "./db/schema";
@@ -12,6 +17,7 @@ import SubjectRoutes from "./routes/SubjectRoutes";
 // import { Rate } from "./db/schema";
 
 import cors from "cors";
+import { Rate, SubjectTag } from "./db/schema";
 const app: Express = express();
 
 // Middleware
@@ -23,14 +29,19 @@ app.get("/api/", (req: Request, res: Response) => {
   res.json({ message: "API is working!" });
 });
 
-// Fetch all users
 app.use("/api", UserRoutes);
 
-// Fetch all tags
 app.use("/api", TagRoutes);
 
-// Fetch all subjects
 app.use("/api", SubjectRoutes);
+
+app.use("/api", CommentRoutes);
+
+app.use("/api", RateRoutes);
+
+app.use("/api", SubjectTagRoutes);
+
+app.get("/api", ReviewRoutes);
 
 // app.get("/api/Subject", async (req: Request, res: Response) => {
 //   let subjects = await db.select().from(Subject);
