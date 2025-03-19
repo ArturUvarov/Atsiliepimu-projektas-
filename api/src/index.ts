@@ -17,7 +17,6 @@ import ReviewRoutes from "./routes/ReviewRoutes";
 // import { Rate } from "./db/schema";
 
 import cors from "cors";
-import { Rate, SubjectTag } from "./db/schema";
 const app: Express = express();
 
 // Middleware
@@ -41,7 +40,7 @@ app.use("/api", RateRoutes);
 
 app.use("/api", SubjectTagRoutes);
 
-app.get("/api", ReviewRoutes);
+app.use("/api", ReviewRoutes);
 
 // app.get("/api/Subject", async (req: Request, res: Response) => {
 //   let subjects = await db.select().from(Subject);
