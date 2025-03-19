@@ -28,19 +28,19 @@ app.get("/api/", (req: Request, res: Response) => {
   res.json({ message: "API is working!" });
 });
 
-app.use("/api", UserRoutes);
+app.use("/api/users", UserRoutes);
 
-app.use("/api", TagRoutes);
+app.use("/api/tags", TagRoutes);
 
-app.use("/api", SubjectRoutes);
+app.use("/api/subjects", SubjectRoutes);
 
-app.use("/api", CommentRoutes);
+app.use("/api/comment", CommentRoutes);
 
-app.use("/api", RateRoutes);
+app.use("/api/rate", RateRoutes);
 
-app.use("/api", SubjectTagRoutes);
+app.use("/api/subjecttag", SubjectTagRoutes);
 
-app.use("/api", ReviewRoutes);
+app.use("/api/rewiew", ReviewRoutes);
 
 // app.get("/api/Subject", async (req: Request, res: Response) => {
 //   let subjects = await db.select().from(Subject);
