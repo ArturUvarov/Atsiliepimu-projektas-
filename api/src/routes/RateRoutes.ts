@@ -1,8 +1,8 @@
 import express from "express";
-import { getRate } from "../controllers/RateControllerApi";
+import { index } from "../controllers/RateControllerApi";
 
 const router = express.Router();
 
-router.get("/rate", getRate);
+router.get("/", index);
 
 export default router;

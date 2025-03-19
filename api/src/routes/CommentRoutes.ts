@@ -1,8 +1,8 @@
 import express from "express";
-import { getComments } from "../controllers/CommentControllerApi";
+import { index } from "../controllers/CommentControllerApi";
 
 const router = express.Router();
 
-router.get("/comment", getComments);
+router.get("/", index);
 
 export default router;
