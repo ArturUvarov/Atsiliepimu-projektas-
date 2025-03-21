@@ -1,12 +1,5 @@
-import {
-  HomeIcon,
-  UserCircleIcon,
-  TableCellsIcon,
-  InformationCircleIcon,
-  ServerStackIcon,
-  RectangleStackIcon,
-} from "@heroicons/react/24/solid";
-import { Home, Profile, Notifications, Components } from "@/pages/dashboard";
+import {HomeIcon,UserCircleIcon,ServerStackIcon,RectangleStackIcon,} from "@heroicons/react/24/solid";
+import { Home, Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import { User } from "@/pages/user";
 
@@ -38,24 +31,6 @@ export const routes = [
         element: <User />,
       },
       
-      // {
-      //   icon: <UserCircleIcon {...icon} />,
-      //   name: "components",
-      //   path: "/components",
-      //   element: <Components />,
-      // },
-      //{
-      //   icon: <TableCellsIcon {...icon} />,
-      //   name: "tables",
-      //   path: "/tables",
-      //   element: <Tables />,
-      // },
-      // {
-      //   icon: <InformationCircleIcon {...icon} />,
-      //   name: "notifications",
-      //   path: "/notifications",
-      //   element: <Notifications />,
-      // },
     ],
   },
   {

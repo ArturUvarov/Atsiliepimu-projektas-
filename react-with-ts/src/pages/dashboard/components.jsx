@@ -1,17 +1,9 @@
 import { DialogDefault, DialogLogin } from "@/widgets/dialogs";
 import { FeaturedImageGallery, MasonryGridGallery, DefaultGallery, CarouselDefault, ImgWithBlurredCaption, VideoMuted } from "@/widgets/images";
-import { MegaMenuWithHover, StepperWithContent } from "@/widgets/meniu";
-import { RatingColors, RatingWithText } from "@/widgets/ratings";
-import DefaultRating from "@/widgets/ratings/rating-default";
 import { SpeedDialWithTextInside, SpeedDialWithTextOutside } from "@/widgets/speeddials";
 import { TabsWithIcon, UnderlineTabs, VerticalTabsWithIcon } from "@/widgets/tabs";
 import { ActivitiesTimeline, TimelineWithAvatar } from "@/widgets/timelines";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-} from "@material-tailwind/react";
+import {Card,CardHeader,CardBody,Typography,} from "@material-tailwind/react";
 
 
 export function Components() {
@@ -24,7 +16,6 @@ export function Components() {
           </Typography>
         </CardHeader>
         <CardBody className="p-4">
-          <MegaMenuWithHover />
         </CardBody>
       </Card>
       <Card>
@@ -45,18 +36,6 @@ export function Components() {
           </Typography>
         </CardHeader>
         <CardBody className="p-4">
-          <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-3">
-            <div>
-              <DefaultRating />
-            </div>
-            <div>
-              <RatingWithText />
-            </div>
-            <div>
-              <RatingColors />
-            </div>
-          </div>
-
         </CardBody>
       </Card>
       <Card>

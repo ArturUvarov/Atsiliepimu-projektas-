@@ -1,12 +1,7 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import {Button,IconButton,Typography} from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
 export function Sidenav({ brandImg, brandName, routes }) {
@@ -15,7 +10,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
-    transparent: "bg-transparent",
   };
 
   return (
@@ -73,7 +67,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           ? "white"
                           : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center gap-4 px-4 capitalize active:bg-opacity-85"
                       fullWidth
                     >
                       {icon}
@@ -94,11 +88,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
     </aside>
   );
 }
-
-Sidenav.defaultProps = {
-  brandImg: "/img/logo-ct.png",
-  brandName: "Material Tailwind React",
-};
 
 Sidenav.propTypes = {
   brandImg: PropTypes.string,

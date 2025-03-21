@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Dialog,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Checkbox,
-} from "@material-tailwind/react";
+import {Button,Dialog,Card,CardBody,CardFooter,Typography,Input,Checkbox,} from "@material-tailwind/react";
  
 export function DialogLogin() {
   const [open, setOpen] = React.useState(false);

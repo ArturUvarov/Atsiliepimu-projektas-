@@ -1,7 +1,7 @@
-import { Rating } from "@material-tailwind/react";
+// import { Rating } from "@material-tailwind/react";
  
-export function DefaultRating() {
-  return <Rating value={4} />;
-}
+// export function DefaultRating() {
+//   return <Rating value={4} />;
+// }
 
-export default DefaultRating;
+// export default DefaultRating;

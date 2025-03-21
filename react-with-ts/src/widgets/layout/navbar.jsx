@@ -1,13 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
-  Navbar as MTNavbar,
-  Collapse,
-  Typography,
-  Button,
-  IconButton,
-} from "@material-tailwind/react";
+import {Navbar as MTNavbar,Collapse,Typography,Button,IconButton,} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar({ brandName, routes, action }) {
@@ -60,7 +54,7 @@ export function Navbar({ brandName, routes, action }) {
         <IconButton
           variant="text"
           size="sm"
-          className="ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className="ml-auto text-inherit lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
