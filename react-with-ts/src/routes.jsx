@@ -1,7 +1,7 @@
 import {HomeIcon,UserCircleIcon,ServerStackIcon,RectangleStackIcon,} from "@heroicons/react/24/solid";
 import { Home, Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import { User } from "@/pages/user";
+import { User } from "@/pages/user/";
 
 
 const icon = {
