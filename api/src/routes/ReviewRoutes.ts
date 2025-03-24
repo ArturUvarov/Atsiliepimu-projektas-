@@ -1,8 +1,8 @@
 import express from "express";
-import { getReview } from "../controllers/ReviewControllerApi";
+import { index } from "../controllers/ReviewControllerApi";
 
 const router = express.Router();
 
-router.get("/review", getReview);
+router.get("/", index);
 
 export default router;

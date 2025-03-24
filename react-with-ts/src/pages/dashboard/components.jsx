@@ -1,8 +1,7 @@
 import { DialogDefault, DialogLogin } from "@/widgets/dialogs";
-import { FeaturedImageGallery, MasonryGridGallery, DefaultGallery, CarouselDefault, ImgWithBlurredCaption, VideoMuted } from "@/widgets/images";
+import { FeaturedImageGallery, MasonryGridGallery, DefaultGallery, CarouselDefault} from "@/widgets/images";
 import { SpeedDialWithTextInside, SpeedDialWithTextOutside } from "@/widgets/speeddials";
 import { TabsWithIcon, UnderlineTabs, VerticalTabsWithIcon } from "@/widgets/tabs";
-import { ActivitiesTimeline, TimelineWithAvatar } from "@/widgets/timelines";
 import {Card,CardHeader,CardBody,Typography,} from "@material-tailwind/react";
 
 
@@ -86,10 +85,8 @@ export function Components() {
         <CardBody className="p-4">
           <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2">
             <div className="mb-12">
-              <ActivitiesTimeline />
             </div>
             <div className="mb-12">
-              <TimelineWithAvatar />
             </div>
           </div>
         </CardBody>
@@ -141,7 +138,6 @@ export function Components() {
           </Typography>
         </CardHeader>
         <CardBody className="p-4">
-          <ImgWithBlurredCaption />
         </CardBody>
       </Card>
       <Card>
@@ -151,7 +147,6 @@ export function Components() {
           </Typography>
         </CardHeader>
         <CardBody className="p-4">
-          <VideoMuted />
         </CardBody>
       </Card>
     </div>

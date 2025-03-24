@@ -23,8 +23,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
       >
         <Link to="/" className="py-6 px-8 text-center">
           <Typography
-            variant="h6"
+            variant="h4" // Changed from h6 to h4 for bigger text
             color={sidenavType === "dark" ? "white" : "blue-gray"}
+            className="font-bold" // Added font-bold for better visibility
           >
             {brandName}
           </Typography>
@@ -32,12 +33,12 @@ export function Sidenav({ brandImg, brandName, routes }) {
         <IconButton
           variant="text"
           color="white"
-          size="sm"
+          size="lg" // Changed from regular to lg
           ripple={false}
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           onClick={() => setOpenSidenav(dispatch, false)}
         >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
+          <XMarkIcon strokeWidth={2.5} className="h-6 w-6" />
         </IconButton>
       </div>
       <div className="m-4">
@@ -67,13 +68,15 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           ? "white"
                           : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 capitalize active:bg-opacity-85"
+                      className="flex items-center gap-4 px-6 py-3 capitalize"
                       fullWidth
                     >
-                      {icon}
+                      <div className={`${isActive ? "text-black" : ""} text-xl`}> 
+                        {icon}
+                      </div>
                       <Typography
-                        color="inherit"
-                        className="font-medium capitalize"
+                        color="black"
+                        className="font-medium capitalize text-base" 
                       >
                         {name}
                       </Typography>

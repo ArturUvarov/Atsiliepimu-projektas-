@@ -1,8 +1,8 @@
 import express from "express";
-import { getSubjectTag } from "../controllers/SubjectTagControllerApi";
+import { index } from "../controllers/SubjectTagControllerApi";
 
 const router = express.Router();
 
-router.get("/subjecttag", getSubjectTag);
+router.get("/", index);
 
 export default router;
