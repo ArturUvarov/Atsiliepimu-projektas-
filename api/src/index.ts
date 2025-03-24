@@ -8,6 +8,7 @@ import CommentRoutes from "./routes/CommentRoutes";
 import RateRoutes from "./routes/RateRoutes";
 import SubjectTagRoutes from "./routes/SubjectTagRoutes";
 import ReviewRoutes from "./routes/ReviewRoutes";
+import ChatRoutes from "./routes/ChatRoutes";
 // import { User } from "./db/schema";
 // import { Subject } from "./db/schema";
 // import { Tag } from "./db/schema";
@@ -17,7 +18,9 @@ import ReviewRoutes from "./routes/ReviewRoutes";
 // import { Rate } from "./db/schema";
 
 import cors from "cors";
+import dotenv from "dotenv";
 const app: Express = express();
+dotenv.config();
 
 // Middleware
 app.use(cors());
@@ -41,6 +44,8 @@ app.use("/api", RateRoutes);
 app.use("/api", SubjectTagRoutes);
 
 app.use("/api", ReviewRoutes);
+
+app.use("/api", ChatRoutes);
 
 // app.get("/api/Subject", async (req: Request, res: Response) => {
 //   let subjects = await db.select().from(Subject);
