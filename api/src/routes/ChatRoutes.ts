@@ -11,6 +11,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Store in environment variable
 });
 
+console.log("OpenAI API key:", process.env.OPENAI_API_KEY);
+
+
 router.get("/chat", (req, res) => {
   res.json({ message: "Chat route is working!" });
 });
@@ -21,7 +24,7 @@ router.post("/chat", async (req, res) => {
     const { message } = req.body;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4", // or "gpt-3.5-turbo"
+      model: "gpt-4o", // or "gpt-3.5-turbo"
       messages: [{ role: "user", content: message }],
     });
 
