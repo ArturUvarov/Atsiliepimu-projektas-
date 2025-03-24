@@ -81,3 +81,8 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`API server running on port ${port}`);
 });
+
+console.log(
+  "OpenAI API Key:",
+  process.env.OPENAI_API_KEY ? "Exists" : "Missing"
+);
