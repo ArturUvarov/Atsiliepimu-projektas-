@@ -1,31 +1,33 @@
-# Review Management System
+# Review's WebPage
 
 A 3-month full-stack project for managing and displaying reviews.
 
 ## 🚀 Tech Stack
 
-- **Frontend**: 
+- **Frontend**:
   - React
   - TailwindCSS
-- **Backend**: 
+  - Material-Tailwind
+- **Backend**:
   - Express.js
   - Node.js
-- **Database**: 
+- **Database**:
   - MySQL
   - Drizzle ORM
-- **Containerization**: 
+- **Containerization**:
   - Docker
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [Node.js](https://nodejs.org/) (LTS version recommended)
 - npm (comes with Node.js)
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 # Using HTTPS
@@ -35,20 +37,23 @@ git clone https://github.com/ArturUvarov/Atsiliepimu-projektas-.git
 git clone git@github.com:ArturUvarov/Atsiliepimu-projektas-.git
 ```
 
-### 2. Launch the Application
+### 2️⃣ Launch the Application
 
 Start all services using Docker Compose:
 
-```bash
-docker-compose up
+````bash
+docker compose up
 ```
 
 The application will be available at:
-- Frontend: http://localhost:8080
 
-### 3. Seed the Database
+- Frontend: http://localhost:8080
+- Backend: http://localhost:3000
+
+### 3️⃣ Seed the Database
 
 After the containers are running:
+
 1. Open Docker Desktop
 2. Locate the API container
 3. Go to the 'Exec' tab
@@ -56,23 +61,14 @@ After the containers are running:
 
 ```bash
 npm run drizzle:seed
-```
+````
 
 ## 🔧 Configuration
 
 The project uses the following ports:
+
 - Frontend: 8080
 - Backend API: 3000
-- MySQL: 3306
-
-
-## 🤝 Contributing
-
-1. Clone the repository
-2. Create your feature branch (`git checkout`)
-3. Commit your changes (`git commit -m 'Commit'`)
-4. Push to the branch (`git push`)
-5. Open a Pull Request
 
 ## 📜 License
 
