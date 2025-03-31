@@ -1,5 +1,5 @@
-import {HomeIcon,UserCircleIcon,ServerStackIcon,RectangleStackIcon,} from "@heroicons/react/24/solid";
-import { Home, Profile} from "@/pages/dashboard";
+import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,} from "@heroicons/react/24/solid";
+import { Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import { User } from "@/pages/user";
 
@@ -12,12 +12,6 @@ export const routes = [
   {
     layout: "dashboard",
     pages: [
-      {
-        icon: <HomeIcon {...icon} />,
-        name: "dashboard",
-        path: "/home",
-        element: <Home />,
-      },
       {
         icon: <UserCircleIcon {...icon} />,
         name: "profile",
