@@ -18,7 +18,6 @@ export function User() {
       {data.map((user) => (
         <div key={user.id}>
           <h1>{user.id}</h1>
-          <p>{user.email}</p>
         </div>
       ))}
     </div>

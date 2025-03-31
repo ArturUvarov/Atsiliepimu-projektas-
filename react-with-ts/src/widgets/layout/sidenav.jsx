@@ -23,9 +23,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
       >
         <Link to="/" className="py-6 px-8 text-center">
           <Typography
-            variant="h4" // Changed from h6 to h4 for bigger text
+            variant="h4" 
             color={sidenavType === "dark" ? "white" : "blue-gray"}
-            className="font-bold" // Added font-bold for better visibility
+            className="font-bold" 
           >
             {brandName}
           </Typography>
@@ -33,7 +33,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
         <IconButton
           variant="text"
           color="white"
-          size="lg" // Changed from regular to lg
+          size="lg" 
           ripple={false}
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           onClick={() => setOpenSidenav(dispatch, false)}
