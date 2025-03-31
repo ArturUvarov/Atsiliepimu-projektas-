@@ -1,11 +1,11 @@
-import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,} from "@heroicons/react/24/solid";
+import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,ChatBubbleLeftEllipsisIcon} from "@heroicons/react/24/solid";
 import { Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import { User } from "@/pages/user";
-
+import {ChatGpt} from "@/pages/chatgpt";
 
 const icon = {
-  className: "w-5 h-5 text-inherit",
+  className: "w-5 h-5 text-inherit",  
 };
 
 export const routes = [
@@ -24,7 +24,12 @@ export const routes = [
         path: "/user",
         element: <User />,
       },
-      
+      {
+        icon: <ChatBubbleLeftEllipsisIcon {...icon} />,
+        name: "ChatGpt",
+        path: "/ChatGpt",
+        element: <ChatGpt />,
+      },
     ],
   },
   {
