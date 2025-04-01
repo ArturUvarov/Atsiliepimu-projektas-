@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 
 const FeedMain = () => {
-    return (
+    return ( 
         <div className="flex flex-col lg:flex-row gap-6 p-6 bg-gradient-to-br from-black via-gray-900 to-blue-900 min-h-screen animate-gradient-x">
             {/* Sidebar */}
             <aside className="w-full lg:w-1/4 space-y-6 animate-fade-in">
