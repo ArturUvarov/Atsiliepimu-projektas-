@@ -9,7 +9,7 @@ import {
     ListItem,
 } from "@material-tailwind/react";
 
-const FeedMain = () => {
+const FeedMain = () => { 
     return ( 
         <div className="flex flex-col lg:flex-row gap-6 p-6 bg-gradient-to-br from-black via-gray-900 to-blue-900 min-h-screen animate-gradient-x">
             {/* Sidebar */}
