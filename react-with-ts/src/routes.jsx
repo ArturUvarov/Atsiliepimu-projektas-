@@ -3,12 +3,24 @@ import { Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import { User } from "@/pages/user";
 import {ChatGpt} from "@/pages/chatgpt";
+import { FeedMain } from "@/pages/feed";
 
 const icon = {
   className: "w-5 h-5 text-inherit",  
 };
 
 export const routes = [
+  {
+    layout: "feed",
+    pages: [  
+      {
+        icon: <UserCircleIcon {...icon} />,
+        name: "feed",
+        path: "/feed",
+        element: <FeedMain />,
+      },
+    ],
+  },
   {
     layout: "dashboard",
     pages: [

@@ -1,1 +1,1 @@
-export * from './Feed';
+export {default as FeedMain} from "./FeedMain";
