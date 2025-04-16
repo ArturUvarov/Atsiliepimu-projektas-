@@ -27,9 +27,9 @@ export const authservice = {
         }),
       });
       
-      return await handleResponse(response);
+      const data = await handleResponse(response);
+      return data;
     } catch (error) {
-      console.error('Registration error:', error);
       throw new Error(error.message || 'Registration failed');
     }
   },
@@ -55,7 +55,41 @@ export const authservice = {
     }
   },
 
+  async getProfile() {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_URL}/profile`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      
+      return await handleResponse(response);
+    } catch (error) {
+      throw new Error(error.message || 'Failed to fetch profile');
+    }
+  },
+
+  async updateProfile(updatedData) {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_URL}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedData),
+      });
+      
+      return await handleResponse(response);
+    } catch (error) {
+      throw new Error(error.message || 'Failed to update profile');
+    }
+  },
+
   logout() {
     localStorage.removeItem('token');
+    window.location.href = '/auth/sign-in';
   }
 };

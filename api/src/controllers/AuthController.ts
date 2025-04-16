@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import db from "../db"; // Import the Drizzle database instance
-import { User } from "../db/schema"; // Import the User schema
-import { eq } from "drizzle-orm"; // Import the eq function for equality checks
+import db from "../db";
+import { User } from "../db/schema";
+import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 
 export class AuthController {
@@ -10,7 +10,6 @@ export class AuthController {
     const { email, password, username } = req.body;
 
     try {
-      // Check if the user already exists
       const existingUser = await db
         .select()
         .from(User)
@@ -21,10 +20,8 @@ export class AuthController {
         return res.status(400).json({ message: "User already exists" });
       }
 
-      // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Insert the new user into the database
       const newUser = await db
         .insert(User)
         .values({
@@ -41,11 +38,11 @@ export class AuthController {
       return res.status(500).json({ message: "Internal server error", error });
     }
   }
+
   static async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;
 
     try {
-      // Check if the user exists
       const user = await db
         .select()
         .from(User)
@@ -58,7 +55,6 @@ export class AuthController {
 
       const existingUser = user[0];
 
-      // Compare the provided password with the hashed password
       const isPasswordValid = await bcrypt.compare(
         password,
         existingUser.password
@@ -67,14 +63,71 @@ export class AuthController {
         return res.status(401).json({ message: "Invalid credentials" });
       }
 
-      // Generate a JWT token
       const token = jwt.sign(
         { id: existingUser.id, email: existingUser.email },
-        process.env.JWT_SECRET || "default_secret", // Use a secret from environment variables
-        { expiresIn: "1h" } // Token expiration time
+        process.env.JWT_SECRET || "default_secret",
+        { expiresIn: "1h" }
       );
 
       return res.status(200).json({ message: "Login successful", token });
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+  }
+
+  static async getProfile(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+
+      if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+      }
+
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET || "default_secret"
+      ) as any;
+
+      const user = await db
+        .select({
+          id: User.id,
+          email: User.email,
+          username: User.username,
+        })
+        .from(User)
+        .where(eq(User.id, decoded.id))
+        .execute();
+
+      if (!user || user.length === 0) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      return res.json(user[0]);
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+  }
+
+  static async updateProfile(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+      }
+
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET || "default_secret"
+      ) as any;
+      const { username, email } = req.body;
+
+      await db
+        .update(User)
+        .set({ username, email })
+        .where(eq(User.id, decoded.id))
+        .execute();
+
+      return res.json({ message: "Profile updated successfully" });
     } catch (error) {
       return res.status(500).json({ message: "Internal server error", error });
     }

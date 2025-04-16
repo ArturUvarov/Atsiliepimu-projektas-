@@ -1,7 +1,6 @@
 import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,ChatBubbleLeftEllipsisIcon} from "@heroicons/react/24/solid";
 import { Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import { User } from "@/pages/user";
 import {ChatGpt} from "@/pages/chatgpt";
 import { FeedMain } from "@/pages/feed";
 
@@ -14,8 +13,6 @@ export const routes = [
     layout: "feed",
     pages: [  
       {
-        icon: <UserCircleIcon {...icon} />,
-        name: "feed",
         path: "/feed",
         element: <FeedMain />,
       },
@@ -29,12 +26,6 @@ export const routes = [
         name: "profile",
         path: "/profile",
         element: <Profile />,
-      },
-      {
-        icon: <UserCircleIcon {...icon} />,
-        name: "user",
-        path: "/user",
-        element: <User />,
       },
       {
         icon: <ChatBubbleLeftEllipsisIcon {...icon} />,
