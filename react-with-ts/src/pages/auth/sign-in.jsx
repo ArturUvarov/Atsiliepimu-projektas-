@@ -1,17 +1,37 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authservice } from "./authservice";
 import { Card, Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 export function SignIn() {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     terms: false,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (!formData.terms) {
+      setError("Please accept the terms and conditions");
+      return;
+    }
+
+    try {
+      const response = await authservice.login({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      // Redirect to dashboard or home page after successful login
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -119,6 +139,12 @@ export function SignIn() {
                   onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
                 />
               </div>
+
+              {error && (
+                <Typography color="red" className="mt-2 text-center">
+                  {error}
+                </Typography>
+              )}
 
               <Button
                 size="lg"
