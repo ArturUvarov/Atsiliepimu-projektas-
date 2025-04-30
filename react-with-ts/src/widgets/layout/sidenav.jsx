@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import {Button,IconButton,Typography} from "@material-tailwind/react";
+import { Button,IconButton,Typography } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
@@ -21,15 +21,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
       <div
         className={`relative`}
       >
-        <Link to="/" className="py-6 px-8 text-center">
-          <Typography
-            variant="h4" 
-            color={sidenavType === "dark" ? "white" : "blue-gray"}
-            className="font-bold" 
-          >
-            {brandName}
-          </Typography>
-        </Link>
         <IconButton
           variant="text"
           color="white"

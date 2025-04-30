@@ -30,7 +30,7 @@ function App() {
           </ProtectedRoute>
         } 
       />
-      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+      <Route path="*" element={<Navigate to="/dashboard/profile" replace />} />
     </Routes>
   );
 }

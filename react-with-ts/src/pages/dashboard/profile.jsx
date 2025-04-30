@@ -338,8 +338,8 @@ export function Profile() {
         </CardBody>
       </Card>
       <EditProfileModal
-        open={open}
-        handleOpen={handleOpen}
+        isOpen={open}
+        onClose={handleOpen}
         userData={userData}
         onSave={handleEditProfile}
       />

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Dialog,
   Card,
   CardBody,
   CardFooter,
@@ -8,9 +7,10 @@ import {
   Input,
   Button,
 } from "@material-tailwind/react";
-import { PencilIcon, MapPinIcon, EnvelopeIcon, PhoneIcon, UserIcon } from "@heroicons/react/24/solid";
+import { MapPinIcon, EnvelopeIcon, PhoneIcon, UserIcon } from "@heroicons/react/24/solid";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 
-export function editprofile({ open, handleOpen, userData, onSave }) {
+export function editprofile({ userData, onSave }) {
   const [formData, setFormData] = useState({
     username: userData?.username || "",
     email: userData?.email || "",
@@ -22,34 +22,38 @@ export function editprofile({ open, handleOpen, userData, onSave }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await onSave(formData);
-    handleOpen();
   };
 
   return (
-    <Dialog
-      size="md"
-      open={open}
-      handler={handleOpen}
-      className="bg-transparent shadow-none"
-      dismiss={{
-        enabled: true,
-        escapeKey: true,
-        outsidePress: true,
-      }}
-    >
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Card className="w-full max-w-[500px] shadow-2xl backdrop-blur-xl bg-white/95">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
+      <div className="max-w-[550px] mx-auto">
+        <Card className="shadow-xl">
           <CardBody className="flex flex-col gap-8 p-8">
-            <div className="text-center">
-              <Typography variant="h3" className="font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
-                Edit Profile
-              </Typography>
-              <Typography variant="paragraph" color="blue-gray" className="mt-2 font-medium opacity-75">
-                Update your personal information
-              </Typography>
+            {/* Profile Header */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative">
+                <div className="w-24 h-24 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <UserCircleIcon className="w-20 h-20 text-blue-500" />
+                </div>
+                <button className="absolute bottom-0 right-0 p-1.5 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg>
+                </button>
+              </div>
+              <div className="text-center space-y-1">
+                <Typography variant="h3" className="font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                  Edit Profile
+                </Typography>
+                <Typography variant="paragraph" className="text-blue-gray-600 font-medium">
+                  Update your personal information
+                </Typography>
+              </div>
             </div>
 
+            {/* Form Fields */}
             <div className="grid gap-6">
+              {/* Existing input fields with updated styling */}
               <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <UserIcon className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
@@ -114,12 +118,13 @@ export function editprofile({ open, handleOpen, userData, onSave }) {
                 />
               </div>
 
+              {/* Bio field with enhanced styling */}
               <div className="space-y-2">
                 <Typography variant="small" color="blue-gray" className="font-medium pl-1">
                   Bio
                 </Typography>
                 <textarea
-                  className="w-full rounded-lg border-blue-gray-200 focus:border-blue-500 focus:ring-blue-500/20 p-4 text-sm transition-all hover:border-blue-500 min-h-[100px] resize-none"
+                  className="w-full rounded-lg border border-blue-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 p-4 text-sm transition-all hover:border-blue-500 min-h-[120px] resize-none"
                   placeholder="Tell us about yourself..."
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
@@ -131,26 +136,25 @@ export function editprofile({ open, handleOpen, userData, onSave }) {
           <CardFooter className="pt-0 px-8 pb-8 flex gap-4">
             <Button
               size="lg"
-              variant="filled"
               onClick={handleSubmit}
               fullWidth
-              className="bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              className="bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg transition-all"
             >
               Save Changes
             </Button>
             <Button
               size="lg"
-              variant="text"
-              onClick={handleOpen}
+              variant="outlined"
+              onClick={() => navigate(-1)} // Go back to previous page
               fullWidth
-              className="hover:bg-blue-gray-50/50"
+              className="border-blue-500 text-blue-500 hover:opacity-75 transition-opacity"
             >
               Cancel
             </Button>
           </CardFooter>
         </Card>
       </div>
-    </Dialog>
+    </div>
   );
 }
 

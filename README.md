@@ -1,8 +1,25 @@
-# Review's WebPage
+<h1 align="center">
+  <br>
+  <img src="https://ibb.co/fdbSKk61" alt="atsilepimo_projektas" width="200">
+  <br>
+  Atsilepimo projektas
+  <br>
+</h1>
 
-A 3-month full-stack project for managing and displaying reviews.
+<h4 align="center">Full-stack project for managing and displaying reviews based on React.</h4>
 
-## 🚀 Tech Stack
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
+
+! [demo] (https://ibb.co/8gtT8VqG)
+
+## Tech Stack
 
 - **Frontend**:
   - React
@@ -17,7 +34,7 @@ A 3-month full-stack project for managing and displaying reviews.
 - **Containerization**:
   - Docker
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -25,7 +42,7 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (LTS version recommended)
 - npm (comes with Node.js)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1️⃣ Clone the Repository
 
@@ -41,7 +58,7 @@ git clone git@github.com:ArturUvarov/Atsiliepimu-projektas-.git
 
 Start all services using Docker Compose:
 
-````bash
+```bash
 docker compose up
 ```
 
@@ -54,28 +71,11 @@ The application will be available at:
 
 After the containers are running:
 
-1. Open Docker Desktop
-2. Locate the API container
-3. Go to the 'Exec' tab
-4. Run the following command:
-
 ```bash
+# Execute the seed command in the API container
 npm run drizzle:seed
-````
-
-## 🔧 Configuration
-
-The project uses the following ports:
-
-- Frontend: 8080
-- Backend API: 3000
+```
 
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-Artūr Uvarov - [GitHub](https://github.com/ArturUvarov)
-
-Project Link: [https://github.com/ArturUvarov/Atsiliepimu-projektas-](https://github.com/ArturUvarov/Atsiliepimu-projektas-)

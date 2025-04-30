@@ -2,22 +2,12 @@ import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,ChatBubbleLeftEllipsi
 import { Profile} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import {ChatGpt} from "@/pages/chatgpt";
-import { FeedMain } from "@/pages/feed";
 
 const icon = {
   className: "w-5 h-5 text-inherit",  
 };
 
 export const routes = [
-  {
-    layout: "feed",
-    pages: [  
-      {
-        path: "/feed",
-        element: <FeedMain />,
-      },
-    ],
-  },
   {
     layout: "dashboard",
     pages: [
