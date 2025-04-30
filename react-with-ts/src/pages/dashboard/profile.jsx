@@ -1,10 +1,51 @@
+import { useState, useEffect } from "react";
 import {Card,CardBody,CardHeader,CardFooter,Avatar,Typography,Button,Chip,} from "@material-tailwind/react";
 import { PencilIcon, MapPinIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-import { ProfileInfoCard } from "@/widgets/cards";
 import { projectsData } from "@/data";
+import { authservice } from "../auth/authservice";
+import { editprofile as EditProfileModal } from "./editprofile";
 
 export function Profile() {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(!open);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const data = await authservice.getProfile();
+        setUserData(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  const handleEditProfile = async (updatedData) => {
+    try {
+      await authservice.updateProfile(updatedData);
+      setUserData({ ...userData, ...updatedData });
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleLogout = () => {
+    authservice.logout();
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!userData) return <div>No profile data</div>;
+
   return (
     <>
       <div className="relative mt-8 h-[40vh] w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover bg-center">
@@ -20,8 +61,8 @@ export function Profile() {
           <div className="mb-10 flex items-center justify-between flex-wrap gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src="/img/bruce-mars.jpeg"
-                alt="bruce-mars"
+                src={userData.avatar || "/img/bruce-mars.jpeg"}
+                alt={userData.username}
                 size="xxl"
                 variant="circular"
                 className="ring-4 ring-blue-500/30 shadow-xl border-4 border-white h-32 w-32 transform transition-all duration-300 hover:scale-105 hover:ring-blue-500/50"
@@ -29,24 +70,51 @@ export function Profile() {
               <div>
                 <div className="flex items-center gap-4">
                   <Typography variant="h3" color="blue-gray" className="mb-1">
-                    Richard Davis
+                    {userData.username}
                   </Typography>
                   <Chip
-                    value="Pro Member"
+                    value={userData.membership || "Pro Member"}
                     className="bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg shadow-blue-500/20"
                   />
                 </div>
                 <Typography variant="lead" className="font-normal text-blue-gray-600">
-                  CEO / Co-Founder
+                  {userData.role || "CEO / Co-Founder"}
                 </Typography>
                 <div className="flex gap-4 mt-4">
                   <Button size="sm" variant="outlined" className="flex items-center gap-2">
                     <EnvelopeIcon className="h-4 w-4" />
                     Message
                   </Button>
-                  <Button size="sm" className="flex items-center gap-2 bg-blue-500">
+                  <Button 
+                    size="sm" 
+                    className="flex items-center gap-2 bg-blue-500" 
+                    onClick={handleOpen}
+                  >
                     <PencilIcon className="h-4 w-4" />
                     Edit Profile
+                  </Button>
+                  <Button
+                    size="sm"
+                    color="red"
+                    variant="filled"
+                    className="flex items-center gap-2 bg-red-500 hover:bg-red-600 transition-all duration-300"
+                    onClick={handleLogout}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="h-4 w-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    <span className="text-white">Logout</span>
                   </Button>
                 </div>
               </div>
@@ -62,13 +130,14 @@ export function Profile() {
                   variant="text" 
                   className="flex items-center gap-2"
                   size="sm"
+                  onClick={() => handleEditProfile({})}
                 >
                   <PencilIcon className="h-4 w-4" />
                   Edit
                 </Button>
               </div>
               <Typography className="mb-6 text-blue-gray-500 text-l">
-                Hi, I'm Richard Davis. With over 15 years of experience in tech leadership, I've helped scale multiple startups to successful exits.
+                {userData.bio || "Hi, I'm Richard Davis. With over 15 years of experience in tech leadership, I've helped scale multiple startups to successful exits."}
               </Typography>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
@@ -80,7 +149,7 @@ export function Profile() {
                       Location
                     </Typography>
                     <Typography variant="small" className="text-blue-gray-500">
-                      San Francisco, USA
+                      {userData.location || "San Francisco, USA"}
                     </Typography>
                   </div>
                 </div>
@@ -93,7 +162,7 @@ export function Profile() {
                       Phone
                     </Typography>
                     <Typography variant="small" className="text-blue-gray-500">
-                      (44) 123 1234 123
+                      {userData.phone || "(44) 123 1234 123"}
                     </Typography>
                   </div>
                 </div>
@@ -106,7 +175,7 @@ export function Profile() {
                       Email
                     </Typography>
                     <Typography variant="small" className="text-blue-gray-500">
-                      richard.davis@company.com
+                      {userData.email || "richard.davis@company.com"}
                     </Typography>
                   </div>
                 </div>
@@ -116,60 +185,17 @@ export function Profile() {
                   Social Media
                 </Typography>
                 <div className="flex gap-4">
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    variant="text" 
-                    className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <i className="fa-brands fa-facebook text-blue-700 text-xl" />
-                    Facebook
-                  </Button>
-                  </a>
-                    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    variant="text" 
-                    className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <i className="fa-brands fa-twitter text-blue-400 text-xl" />
-                    Twitter
-                  </Button>
-                  </a>
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    variant="text" 
-                    className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <i className="fa-brands fa-instagram text-purple-500 text-xl" />
-                    Instagram
-                  </Button>
-                  </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Button 
-                  variant="text" 
-                  className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                    <i className="fa-brands fa-github text-black text-xl" />
-                    GitHub
-                  </Button>
-                  </a>
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                 <Button 
-                   variant="text" 
-                   className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                 >
-                    <i className="fa-brands fa-linkedin text-blue-500 text-xl" />
-                    LinkedIn
-                  </Button>
-                  </a>
-                   <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer">
-                 <Button 
-                   variant="text" 
-                   className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                 >
-                    <i className="fa-brands fa-reddit text-orange-500 text-xl" />
-                    Reddit
-                  </Button>
-                  </a>
+                  {userData.socialMedia?.map(({ platform, url, iconClass }) => (
+                    <a key={platform} href={url} target="_blank" rel="noopener noreferrer">
+                      <Button 
+                        variant="text" 
+                        className="flex items-center gap-1 rounded-lg hover:bg-blue-50 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                      >
+                        <i className={iconClass} />
+                        {platform}
+                      </Button>
+                    </a>
+                  ))}
                 </div>
               </div>
             </Card>
@@ -184,11 +210,11 @@ export function Profile() {
                   Top Skills
                 </Typography>
                 <div className="flex flex-wrap gap-2">
-                  {['#Leadership', '#Strategy', '#Innovation', '#Tech', '#Marketing'].map((skill) => (
+                  {userData.skills?.map((skill) => (
                     <Chip
                       key={skill}
                       value={skill}
-                       className="bg-blue-50 text-blue-700 shadow-none hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 hover:bg-blue-100 cursor-pointer transform hover:-translate-y-1 hover:scale-105"
+                      className="bg-blue-50 text-blue-700 shadow-none hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 hover:bg-blue-100 cursor-pointer transform hover:-translate-y-1 hover:scale-105"
                     />
                   ))}
                 </div>
@@ -196,7 +222,7 @@ export function Profile() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <Card className="p-4 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography variant="h4" className="text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-                    15+
+                    {userData.experience || "15+"}
                   </Typography>
                   <Typography variant="large" className="text-blue-100">
                     Years Experience
@@ -204,7 +230,7 @@ export function Profile() {
                 </Card>
                 <Card className="p-4 bg-gradient-to-br from-purple-500 to-purple-700  hover:from-purple-600 hover:via-purple-700 hover:to-purple-800 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography variant="h4" className="text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-100">
-                    50+
+                    {userData.projects || "50+"}
                   </Typography>
                   <Typography variant="large" className="text-purple-100">
                     Projects Completed
@@ -212,7 +238,7 @@ export function Profile() {
                 </Card>
                 <Card className="p-4 bg-gradient-to-br from-green-500 to-green-700 hover:from-green-600 hover:via-green-700 hover:to-green-800 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography variant="h4" className="text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-green-100">
-                    100%
+                    {userData.successRate || "100%"}
                   </Typography>
                   <Typography variant="large" className="text-green-100">
                     Success Rate
@@ -220,7 +246,7 @@ export function Profile() {
                 </Card>
                 <Card className="p-4 bg-gradient-to-br from-orange-500 to-orange-700  hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography variant="h4" className="text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-orange-100">
-                    24/7
+                    {userData.support || "24/7"}
                   </Typography>
                   <Typography variant="large" className="text-orange-100">
                     Support
@@ -232,11 +258,7 @@ export function Profile() {
                   Recent Achievements
                 </Typography>
                 <div className="flex flex-col gap-4">
-                  {[
-                    'Led successful Series B funding round',
-                    'Launched innovative product line',
-                    'Expanded team by 150%'
-                  ].map((achievement, index) => (
+                  {userData.achievements?.map((achievement, index) => (
                     <div 
                       key={index} 
                       className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50/50 transition-all duration-300 cursor-pointer backdrop-blur-sm group hover:translate-x-2"
@@ -315,6 +337,12 @@ export function Profile() {
           </div>
         </CardBody>
       </Card>
+      <EditProfileModal
+        open={open}
+        handleOpen={handleOpen}
+        userData={userData}
+        onSave={handleEditProfile}
+      />
     </>
   );
 }

@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authservice } from "./authservice";
 import { Card, Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { EnvelopeIcon, LockClosedIcon, UserIcon } from "@heroicons/react/24/outline";
 
 export function SignUp() {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,25 +15,35 @@ export function SignUp() {
     terms: false,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    console.log(formData);
+
+    if (!formData.terms) {
+      setError("Please accept the terms and conditions");
+      return;
+    }
+
+    try {
+      await authservice.register(formData);
+      navigate("/auth/sign-in");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <div className="relative min-h-screen w-full">
-      <div className="absolute inset-0 bg-[url('/img/background-image.png')] bg-cover bg-center scale-110 blur-sm">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-blue-50/50 to-white/90 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-[url('/img/background-image.png')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-blue-50/50 to-white/95 backdrop-blur-md animate-gradient-xy" />
       </div>
 
       <div className="container mx-auto px-4">
         <div className="flex min-h-screen items-center justify-center">
-          <Card className="w-full max-w-lg bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-300">
-            <div className="text-center mb-8">
+          <Card className="w-full max-w-lg bg-white/90 backdrop-blur-2xl p-8 rounded-3xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_48px_rgba(59,130,246,0.2)] transition-all duration-300">
+            <div className="text-center mb-12 animate-fade-in">
               <Typography
                 variant="h2"
-                className="text-blue-gray-900 font-bold mb-2 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+                className="text-4xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent"
               >
                 Create Account
               </Typography>
@@ -37,16 +52,16 @@ export function SignUp() {
               </Typography>
             </div>
 
-            <form className="mt-8 mb-2 space-y-6" onSubmit={handleSubmit}>
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <Typography variant="small" className="text-blue-gray-700 font-medium">
-                    Full Name
-                  </Typography>
+            <form className="mt-8 mb-2 space-y-8" onSubmit={handleSubmit}>
+              <div className="space-y-8">
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <UserIcon className="h-5 w-5 text-blue-500" />
+                  </div>
                   <Input
                     size="lg"
                     placeholder="John Doe"
-                    className="!border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
+                    className="pl-11 !border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder:text-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -55,15 +70,15 @@ export function SignUp() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Typography variant="small" className="text-blue-gray-700 font-medium">
-                    Email
-                  </Typography>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+                  </div>
                   <Input
                     size="lg"
                     type="email"
                     placeholder="name@mail.com"
-                    className="!border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
+                    className="pl-11 !border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder:text-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -72,15 +87,15 @@ export function SignUp() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Typography variant="small" className="text-blue-gray-700 font-medium">
-                    Password
-                  </Typography>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <LockClosedIcon className="h-5 w-5 text-blue-500" />
+                  </div>
                   <Input
                     type="password"
                     size="lg"
                     placeholder="********"
-                    className="!border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
+                    className="pl-11 !border-blue-gray-200 text-blue-gray-800 ring-4 ring-transparent placeholder:text-blue-gray-400 focus:!border-blue-500 focus:ring-blue-500/20"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -90,25 +105,40 @@ export function SignUp() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <Checkbox
+                  containerProps={{ className: "-ml-1" }}
+                  className="checked:bg-blue-500 checked:border-blue-500 transition-all"
+                  ripple={false}
+                  crossOrigin={undefined}
                   label={
-                    <Typography variant="small" className="text-blue-gray-700 font-medium flex gap-1">
-                      I agree to the
-                      <Link to="/terms" className="text-blue-500 hover:text-blue-700 transition-colors">
+                    <Typography 
+                      variant="small" 
+                      className="inline-flex items-center font-medium text-blue-gray-700"
+                    >
+                      I agree to the{" "}
+                      <Link 
+                        to="/terms" 
+                        className="text-blue-500 hover:text-blue-700 transition-colors hover:underline decoration-2 underline-offset-2 ml-1"
+                      >
                         Terms and Conditions
                       </Link>
                     </Typography>
                   }
-                  containerProps={{ className: "-ml-2.5" }}
                   checked={formData.terms}
                   onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
                 />
               </div>
 
+              {error && (
+                <Typography color="red" className="mt-2 text-center animate-shake">
+                  {error}
+                </Typography>
+              )}
+
               <Button
                 size="lg"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-[1.02] transition-all duration-300"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 h-10"
                 type="submit"
               >
                 Create Account

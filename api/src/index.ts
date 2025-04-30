@@ -7,6 +7,7 @@ import RateRoutes from "./routes/RateRoutes";
 import SubjectTagRoutes from "./routes/SubjectTagRoutes";
 import ReviewRoutes from "./routes/ReviewRoutes";
 import ChatRoutes from "./routes/ChatRoutes";
+import AuthRoutes from "./routes/AuthRoutes";
 
 import cors from "cors";
 import dotenv from "dotenv";
@@ -37,6 +38,8 @@ app.use("/api/subjecttags", SubjectTagRoutes);
 app.use("/api/reviews", ReviewRoutes);
 
 app.use("/api", ChatRoutes);
+
+app.use("/api/auth", AuthRoutes);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
