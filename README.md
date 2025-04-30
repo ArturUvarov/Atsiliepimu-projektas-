@@ -76,6 +76,14 @@ After the containers are running:
 npm run drizzle:seed
 ```
 
+### 4️⃣ Create a user
+
+You will be redirected to
+
+```bash
+http://localhost:8080/auth/sign-up
+```
+
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
