@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
-  <img src="https://ibb.co/fdbSKk61" alt="atsilepimo_projektas" width="200">
-  <br>
+<a href="https://ibb.co/8gtT8VqG"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Screenshot-from-2025-04-30-14-06-04" border="0"></a>  
+<br>
   Atsilepimo projektas
   <br>
 </h1>
