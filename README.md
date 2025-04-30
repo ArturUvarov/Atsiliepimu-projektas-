@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-<a href="https://ibb.co/8gtT8VqG"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Screenshot-from-2025-04-30-14-06-04" border="0"></a>  
+<a href="https://ibb.co/fdbSKk61"><img src="https://i.ibb.co/GQXJ1WYx/Chat-GPT-Image-Apr-30-2025-01-55-18-PM.png" alt="Chat-GPT-Image-Apr-30-2025-01-55-18-PM" border="0"></a>
 <br>
   Atsilepimo projektas
   <br>
@@ -17,7 +17,7 @@
   <a href="#license">License</a>
 </p>
 
-! [demo] (https://ibb.co/8gtT8VqG)
+<a href="https://ibb.co/8gtT8VqG"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Screenshot-from-2025-04-30-14-06-04" border="0"></a>
 
 ## Tech Stack
 
