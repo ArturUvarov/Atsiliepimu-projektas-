@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-<a href="https://ibb.co/8gtT8Vq"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Project Screenshot" border="0"></a>
+<a href="https://ibb.co/HLrCWW5S"><img src="https://i.ibb.co/HLrCWW5S/Chat-GPT-Image-Apr-30-2025-01-55-18-PM-modified.png" alt="logo" border="0"></a>
   <br>
   Atsilepimo projektas
   <br>
