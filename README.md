@@ -29,7 +29,6 @@ Before you begin, ensure you have the following installed:
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [Node.js](https://nodejs.org/) (LTS version recommended)
-- npm (comes with Node.js)
 
 ## Getting Started
 
