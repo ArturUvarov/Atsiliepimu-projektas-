@@ -132,4 +132,65 @@ export class AuthController {
       return res.status(500).json({ message: "Internal server error", error });
     }
   }
+  static async isMod(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+      }
+  
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET || "default_secret"
+      ) as any;
+  
+      const user = await db
+        .select({
+          role: User.role,
+        })
+        .from(User)
+        .where(eq(User.id, decoded.id))
+        .execute();
+  
+      if (!user || user.length === 0) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      const isMod = user[0].role === 2;
+      return res.json({ isMod });
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+  }
+
+  static async isAdmin(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+      }
+  
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET || "default_secret"
+      ) as any;
+  
+      const user = await db
+        .select({
+          role: User.role,
+        })
+        .from(User)
+        .where(eq(User.id, decoded.id))
+        .execute();
+  
+      if (!user || user.length === 0) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      const isAdmin = user[0].role === 3;
+      return res.json({ isAdmin });
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+  }
 }
