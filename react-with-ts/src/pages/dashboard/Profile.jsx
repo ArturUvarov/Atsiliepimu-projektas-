@@ -24,9 +24,10 @@ export function Profile() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpenEditModal = () => setIsEditModalOpen(true);
+  const handleCloseEditModal = () => setIsEditModalOpen(false);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -109,7 +110,7 @@ export function Profile() {
                   <Button
                     size="sm"
                     className="flex items-center gap-2 bg-blue-500"
-                    onClick={handleOpen}
+                    onClick={handleOpenEditModal}
                   >
                     <PencilIcon className="h-4 w-4" />
                     Edit Profile
@@ -399,8 +400,8 @@ export function Profile() {
         </CardBody>
       </Card>
       <EditProfileModal
-        isOpen={open}
-        onClose={handleOpen}
+        isOpen={isEditModalOpen}
+        onClose={handleCloseEditModal}
         userData={userData}
         onSave={handleEditProfile}
       />

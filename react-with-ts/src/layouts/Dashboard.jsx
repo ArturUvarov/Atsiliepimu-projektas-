@@ -4,7 +4,6 @@ import routes from "@/routes";
 import { useMaterialTailwindController } from "@/context";
 import { Spinner } from "@material-tailwind/react";
 import { useState } from "react";
-import { Breadcrumbs } from "./BreadCrumbs";
 
 export function Dashboard() {
   const [controller] = useMaterialTailwindController();
@@ -20,7 +19,6 @@ export function Dashboard() {
         }
       />
       <div className="p-4 xl:ml-80">
-        <Breadcrumbs />
         {loading ? (
           <div className="flex h-screen items-center justify-center">
             <Spinner className="h-12 w-12" />
