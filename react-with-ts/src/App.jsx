@@ -13,22 +13,22 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <Routes>
-      <Route 
-        path="/dashboard/*" 
+      <Route
+        path="/dashboard/*"
         element={
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
-        } 
+        }
       />
       <Route path="/auth/*" element={<Auth />} />
-      <Route 
-        path="/feed" 
+      <Route
+        path="/feed"
         element={
           <ProtectedRoute>
             <FeedMain />
           </ProtectedRoute>
-        } 
+        }
       />
       <Route path="*" element={<Navigate to="/dashboard/profile" replace />} />
     </Routes>

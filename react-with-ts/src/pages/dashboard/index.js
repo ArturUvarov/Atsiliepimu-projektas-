@@ -1,3 +1,2 @@
-export * from "@/pages/dashboard/profile";
-export * from "@/pages/dashboard/notifications";
-export * from "@/pages/dashboard/editprofile";
+export * from "@/pages/dashboard/Profile";
+export * from "@/pages/dashboard/EditProfile";

@@ -1,10 +1,15 @@
-import { UserCircleIcon,ServerStackIcon,RectangleStackIcon,ChatBubbleLeftEllipsisIcon} from "@heroicons/react/24/solid";
-import { Profile} from "@/pages/dashboard";
+import {
+  UserCircleIcon,
+  ServerStackIcon,
+  RectangleStackIcon,
+  ChatBubbleLeftEllipsisIcon,
+} from "@heroicons/react/24/solid";
+import { Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import {ChatGpt} from "@/pages/chatgpt";
+import { ChatGpt } from "@/pages/chatgpt";
 
 const icon = {
-  className: "w-5 h-5 text-inherit",  
+  className: "w-5 h-5 text-inherit",
 };
 
 export const routes = [

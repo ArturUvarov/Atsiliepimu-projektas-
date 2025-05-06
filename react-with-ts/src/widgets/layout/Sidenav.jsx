@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Button,IconButton,Typography } from "@material-tailwind/react";
+import { Button, IconButton, Typography } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
 export function Sidenav({ routes }) {
@@ -16,15 +16,13 @@ export function Sidenav({ routes }) {
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl border border-blue-gray-100 transition-transform duration-300 xl:translate-x-0`}
     >
-      <div
-        className={`relative`}
-      >
+      <div className={`relative`}>
         <IconButton
           variant="text"
           color="white"
-          size="lg" 
+          size="lg"
           ripple={false}
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           onClick={() => setOpenSidenav(dispatch, false)}
@@ -36,7 +34,7 @@ export function Sidenav({ routes }) {
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
-              <li className="mx-3.5 mt-4 mb-2">
+              <li className="mx-3.5 mb-2 mt-4">
                 <Typography
                   variant="small"
                   color={sidenavType === "dark" ? "white" : "blue-gray"}
@@ -62,12 +60,14 @@ export function Sidenav({ routes }) {
                       className="flex items-center gap-4 px-6 py-3 capitalize"
                       fullWidth
                     >
-                      <div className={`${isActive ? "text-black" : ""} text-xl`}> 
+                      <div
+                        className={`${isActive ? "text-black" : ""} text-xl`}
+                      >
                         {icon}
                       </div>
                       <Typography
                         color="black"
-                        className="font-medium capitalize text-base" 
+                        className="text-base font-medium capitalize"
                       >
                         {name}
                       </Typography>

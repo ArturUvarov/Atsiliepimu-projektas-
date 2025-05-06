@@ -1,5 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import {ChartPieIcon,UserIcon,UserPlusIcon,ArrowRightOnRectangleIcon,} from "@heroicons/react/24/solid";
+import {
+  ChartPieIcon,
+  UserIcon,
+  UserPlusIcon,
+  ArrowRightOnRectangleIcon,
+} from "@heroicons/react/24/solid";
 import routes from "@/routes";
 
 export function Auth() {
@@ -34,7 +39,7 @@ export function Auth() {
             layout === "auth" &&
             pages.map(({ path, element }) => (
               <Route exact path={path} element={element} />
-            ))
+            )),
         )}
       </Routes>
     </div>
