@@ -2,76 +2,76 @@
   <br>
 <a href="https://ibb.co/HLrCWW5S"><img src="https://i.ibb.co/HLrCWW5S/Chat-GPT-Image-Apr-30-2025-01-55-18-PM-modified.png" alt="logo" border="0"></a>
   <br>
-  Atsilepimo projektas
+  Atsiliepimų projektas
   <br>
 </h1>
 
-<h4 align="center">Full-stack project for managing and displaying reviews based on React.</h4>
+<h4 align="center">Pilno funkcionalumo projektas, skirtas atsiliepimų valdymui ir rodymui, sukurtas su React.</h4>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
+  <a href="#pagrindinės-funkcijos">Pagrindinės Funkcijos</a> •
+  <a href="#kaip-naudoti">Kaip Naudoti</a> •
+  <a href="#atsisiųsti">Atsisiųsti</a> •
+  <a href="#kreditai">Kreditai</a> •
+  <a href="#susiję">Susiję</a> •
+  <a href="#licencija">Licencija</a>
 </p>
 
 <h1 align="center"><a href="https://ibb.co/8gtT8VqG"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Screenshot-from-2025-04-30-14-06-04" border="0"></a></h1>
 
-## Tech Stack
+## Technologijos
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![Drizzle ORM](https://img.shields.io/badge/Drizzle%20ORM-2B90B6?style=for-the-badge&logo=drizzle&logoColor=white)
 
-## Prerequisites
+## Reikalavimai
 
-Before you begin, ensure you have the following installed:
+Prieš pradėdami, įsitikinkite, kad turite įdiegtą:
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Node.js](https://nodejs.org/) (rekomenduojama LTS versija)
 
-## Getting Started
+## Pradžia
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Klonuoti Projektą
 
 ```bash
-# Using HTTPS
+# Naudojant HTTPS
 git clone https://github.com/ArturUvarov/Atsiliepimu-projektas-.git
 
-# Using SSH
+# Naudojant SSH
 git clone git@github.com:ArturUvarov/Atsiliepimu-projektas-.git
 ```
 
-### 2️⃣ Launch the Application
+### 2️⃣ Paleisti Aplikaciją
 
-Start all services using Docker Compose:
+Paleiskite visas paslaugas naudodami Docker Compose:
 
 ```bash
 docker compose up
 ```
 
-The application will be available at:
+Aplikacija bus pasiekiama adresais:
 
-- Frontend: http://localhost:8080
-- Backend: http://localhost:3000
+- Priekinis puslapis: http://localhost:8080
+- Serverio dalis: http://localhost:3000
 
-### 3️⃣ Seed the Database
+### 3️⃣ Užpildyti Duomenų Bazę
 
-After the containers are running:
+Kai konteineriai bus paleisti:
 
 ```bash
-# Execute the seed command in the API container
+# Įvykdykite duomenų bazės užpildymo komandą API konteineryje
 npm run drizzle:seed
 ```
 
-### 4️⃣ Create a user
+### 4️⃣ Sukurti Vartotoją
 
-You will be redirected to
+Būsite nukreipti į:
 
 ```bash
 http://localhost:8080/auth/sign-up
 ```
 
-## 📜 License
+## 📜 Licencija
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Šis projektas yra licencijuotas pagal MIT Licenciją - daugiau informacijos rasite [LICENSE](LICENSE) faile.

@@ -63,9 +63,9 @@ export function Profile() {
     authservice.logout();
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!userData) return <div>No profile data</div>;
+  if (loading) return <div>Kraunama...</div>;
+  if (error) return <div>Klaida: {error}</div>;
+  if (!userData) return <div>Profilio duomenų nėra</div>;
 
   return (
     <>
@@ -93,7 +93,7 @@ export function Profile() {
                     {userData.username}
                   </Typography>
                   <Chip
-                    value={userData.membership || "Pro Member"}
+                    value={userData.membership || "Pro Narys"}
                     className="bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg shadow-blue-500/20"
                   />
                 </div>
@@ -101,7 +101,7 @@ export function Profile() {
                   variant="lead"
                   className="text-blue-gray-600 font-normal"
                 >
-                  {userData.role || "CEO / Co-Founder"}
+                  {userData.role || "Vadovas / Įkūrėjas"}
                 </Typography>
                 <div className="mt-4 flex gap-4">
                   <Button
@@ -110,7 +110,7 @@ export function Profile() {
                     className="flex items-center gap-2"
                   >
                     <EnvelopeIcon className="h-4 w-4" />
-                    Message
+                    Žinutė
                   </Button>
                   <Button
                     size="sm"
@@ -118,7 +118,7 @@ export function Profile() {
                     onClick={handleOpenEditModal}
                   >
                     <PencilIcon className="h-4 w-4" />
-                    Edit Profile
+                    Redaguoti Profilį
                   </Button>
                   <Button
                     size="sm"
@@ -141,7 +141,7 @@ export function Profile() {
                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                       />
                     </svg>
-                    <span className="text-white">Logout</span>
+                    <span className="text-white">Atsijungti</span>
                   </Button>
                 </div>
               </div>
@@ -151,12 +151,12 @@ export function Profile() {
             <Card className="border border-white/20 bg-white/50 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/60">
               <div className="mb-6 flex items-center justify-between">
                 <Typography variant="h5" color="blue-gray">
-                  Profile Information
+                  Profilio Informacija
                 </Typography>
               </div>
               <Typography className="text-blue-gray-500 mb-6 text-xl">
                 {userData.bio ||
-                  "Hi, I'm Richard Davis. With over 15 years of experience in tech leadership, I've helped scale multiple startups to successful exits."}
+                  "Sveiki, aš esu Richard Davis. Turiu daugiau nei 15 metų patirties technologijų srityje, padėjau vystyti keletą sėkmingų startuolių."}
               </Typography>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
@@ -165,13 +165,13 @@ export function Profile() {
                   </div>
                   <div>
                     <Typography variant="large" className="text-xl font-medium">
-                      Location
+                      Vieta
                     </Typography>
                     <Typography
                       variant="small"
                       className="text-blue-gray-500 text-xl"
                     >
-                      {userData.location || "San Francisco, USA"}
+                      {userData.location || "Vilnius, Lietuva"}
                     </Typography>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ export function Profile() {
                   </div>
                   <div>
                     <Typography variant="large" className="text-xl font-medium">
-                      Phone
+                      Telefonas
                     </Typography>
                     <Typography
                       variant="small"
@@ -197,7 +197,7 @@ export function Profile() {
                   </div>
                   <div>
                     <Typography variant="large" className="text-xl font-medium">
-                      Email
+                      El. Paštas
                     </Typography>
                     <Typography
                       variant="small"
@@ -213,7 +213,7 @@ export function Profile() {
                   variant="large"
                   className="mb-4 text-xl font-medium"
                 >
-                  Social Media
+                  Socialiniai Tinklai
                 </Typography>
                 <div className="mb-6 flex items-center gap-4">
                   <a href="https://www.facebook.com/profile" target="_blank">
@@ -252,7 +252,7 @@ export function Profile() {
             <Card className="border border-white/20 bg-white/50 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/60">
               <div className="mb-6 flex items-center justify-between">
                 <Typography variant="h5" color="blue-gray">
-                  Skills & Statistics
+                  Įgūdžiai ir Statistika
                 </Typography>
               </div>
               <div className="mb-6">
@@ -260,7 +260,7 @@ export function Profile() {
                   variant="large"
                   className="mb-4 text-xl font-medium"
                 >
-                  Top Skills
+                  Pagrindiniai Įgūdžiai
                 </Typography>
                 <div className="flex flex-wrap gap-2">
                   {userData.skills?.map((skill) => (
@@ -281,7 +281,7 @@ export function Profile() {
                     {userData.experience || "15+"}
                   </Typography>
                   <Typography variant="large" className="text-xl text-blue-100">
-                    Years Experience
+                    Metų Patirtis
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-purple-500 to-purple-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-purple-600 hover:via-purple-700 hover:to-purple-800 hover:shadow-xl hover:shadow-blue-500/20">
@@ -295,7 +295,7 @@ export function Profile() {
                     variant="large"
                     className="text-xl text-purple-100"
                   >
-                    Projects Completed
+                    Užbaigti Projektai
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-green-500 to-green-700 p-4 transition-all duration-500 hover:-translate-y-2 hover:from-green-600 hover:via-green-700 hover:to-green-800 hover:shadow-xl hover:shadow-blue-500/20">
@@ -309,7 +309,7 @@ export function Profile() {
                     variant="large"
                     className="text-xl text-green-100"
                   >
-                    Success Rate
+                    Sėkmės Rodiklis
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-orange-500 to-orange-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 hover:shadow-xl hover:shadow-blue-500/20">
@@ -323,7 +323,7 @@ export function Profile() {
                     variant="large"
                     className="text-xl text-orange-100"
                   >
-                    Support
+                    Pagalba
                   </Typography>
                 </Card>
               </div>
@@ -332,7 +332,7 @@ export function Profile() {
                   variant="large"
                   className="font-weight-900 mb-4 text-xl"
                 >
-                  Recent Achievements
+                  Naujausi Pasiekimai
                 </Typography>
                 <Card className="transform bg-gradient-to-br from-cyan-500 to-cyan-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography
@@ -373,10 +373,10 @@ export function Profile() {
               color="blue-gray"
               className="mb-8 flex items-center gap-3 text-xl"
             >
-              Recent reviews
+              Naujausi Atsiliepimai
               <Chip
                 size="sm"
-                value={`${projectsData.length} projects`}
+                value={`${projectsData.length} projektai`}
                 className="rounded-full"
               />
             </Typography>
