@@ -36,9 +36,9 @@ export function editprofile({ isOpen, onClose, userData, onSave }) {
       size="md"
       open={isOpen}
       handler={onClose}
-      className="bg-transparent shadow-none"
+      className="flex min-h-screen items-center justify-center bg-transparent shadow-none"
     >
-      <Card className="mx-auto w-full max-w-[24rem] bg-white">
+      <Card className="mx-auto w-full max-w-[24rem] transform bg-white transition-all hover:scale-105">
         <CardBody className="flex flex-col gap-8 p-8">
           {/* Profile Header */}
           <div className="flex flex-col items-center gap-4">
@@ -139,7 +139,7 @@ export function editprofile({ isOpen, onClose, userData, onSave }) {
                 Bio
               </Typography>
               <textarea
-                className="w-full rounded-lg border-blue-gray-200 p-4 text-sm focus:border-blue-500"
+                className="border-blue-gray-200 w-full rounded-lg p-4 text-sm focus:border-blue-500"
                 rows="4"
                 placeholder="Tell us about yourself..."
                 value={formData.bio}

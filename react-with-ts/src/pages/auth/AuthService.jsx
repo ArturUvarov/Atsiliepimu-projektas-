@@ -12,6 +12,14 @@ const handleResponse = async (response) => {
   throw new Error("Invalid response from server");
 };
 
+const parseJwt = (token) => {
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
+};
+
 export const authservice = {
   async register(userData) {
     try {
@@ -45,9 +53,27 @@ export const authservice = {
       });
 
       const data = await handleResponse(response);
+      console.log("Login response:", data);
+
       if (data.token) {
         localStorage.setItem("token", data.token);
+
+        // Parse JWT token to get user info
+        const decodedToken = parseJwt(data.token);
+
+        // Store user information
+        const userInfo = {
+          id: decodedToken.id,
+          email: decodedToken.email,
+          username: credentials.email.split("@")[0],
+          avatar: "/img/bruce-mars.jpeg",
+        };
+
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+        console.log("Stored user info:", userInfo);
       }
+
       return data;
     } catch (error) {
       console.error("Login error:", error);
@@ -90,6 +116,7 @@ export const authservice = {
 
   logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("userInfo");
     window.location.href = "/auth/sign-in";
   },
 };
