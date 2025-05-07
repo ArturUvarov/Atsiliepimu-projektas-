@@ -14,25 +14,30 @@ const icon = {
   className: "w-5 h-5 text-inherit",
 };
 
+const name = {
+  className: "text-xl",
+};
+
 export const routes = [
   {
+    title: "main pages",
     layout: "dashboard",
     pages: [
       {
         icon: <MegaphoneIcon {...icon} />,
-        name: "feed ",
+        name: <span {...name}>Feed</span>,
         path: "/feed",
         element: <FeedMain />,
       },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
+        name: <span {...name}>Profile</span>,
         path: "/profile",
         element: <Profile />,
       },
       {
         icon: <ChatBubbleLeftEllipsisIcon {...icon} />,
-        name: "ChatGpt",
+        name: <span {...name}>ChatGpt</span>,
         path: "/ChatGpt",
         element: <ChatGpt />,
       },
@@ -44,13 +49,13 @@ export const routes = [
     pages: [
       {
         icon: <UserGroupIcon {...icon} />,
-        name: "sign in",
+        name: <span {...name}>Sign-in</span>,
         path: "/sign-in",
         element: <SignIn />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
-        name: "sign up",
+        name: <span {...name}>Sign-up</span>,
         path: "/sign-up",
         element: <SignUp />,
       },

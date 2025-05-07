@@ -19,6 +19,12 @@ import { Link } from "react-router-dom";
 import { projectsData } from "@/data";
 import { authservice } from "../auth/AuthService";
 import { editprofile as EditProfileModal } from "./EditProfile";
+import {
+  FaFacebookSquare,
+  FaRedditSquare,
+  FaLinkedin,
+  FaGithubSquare,
+} from "react-icons/fa";
 
 export function Profile() {
   const [userData, setUserData] = useState(null);
@@ -65,11 +71,6 @@ export function Profile() {
     <>
       <div className="relative mt-8 h-[40vh] w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover bg-center">
         <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50 to-black/0" />
-        <div className="absolute bottom-8 left-8 text-white">
-          <Typography variant="lead" className="opacity-80">
-            Manage your profile and view your recent projects
-          </Typography>
-        </div>
       </div>
       <Card className="hover:shadow-3xl mx-3 -mt-20 mb-6 transform border-none bg-white/90 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:mx-4">
         <CardBody className="p-4">
@@ -84,7 +85,11 @@ export function Profile() {
               />
               <div>
                 <div className="flex items-center gap-4">
-                  <Typography variant="h3" color="blue-gray" className="mb-1">
+                  <Typography
+                    variant="h3"
+                    color="blue-gray"
+                    className="mb-1 text-xl"
+                  >
                     {userData.username}
                   </Typography>
                   <Chip
@@ -94,7 +99,7 @@ export function Profile() {
                 </div>
                 <Typography
                   variant="lead"
-                  className="font-normal text-blue-gray-600"
+                  className="text-blue-gray-600 font-normal"
                 >
                   {userData.role || "CEO / Co-Founder"}
                 </Typography>
@@ -148,17 +153,8 @@ export function Profile() {
                 <Typography variant="h5" color="blue-gray">
                   Profile Information
                 </Typography>
-                <Button
-                  variant="text"
-                  className="flex items-center gap-2"
-                  size="sm"
-                  onClick={() => handleEditProfile({})}
-                >
-                  <PencilIcon className="h-4 w-4" />
-                  Edit
-                </Button>
               </div>
-              <Typography className="text-l mb-6 text-blue-gray-500">
+              <Typography className="text-blue-gray-500 mb-6 text-xl">
                 {userData.bio ||
                   "Hi, I'm Richard Davis. With over 15 years of experience in tech leadership, I've helped scale multiple startups to successful exits."}
               </Typography>
@@ -168,10 +164,13 @@ export function Profile() {
                     <MapPinIcon className="h-5 w-5 text-blue-500" />
                   </div>
                   <div>
-                    <Typography variant="large" className="font-medium">
+                    <Typography variant="large" className="text-xl font-medium">
                       Location
                     </Typography>
-                    <Typography variant="small" className="text-blue-gray-500">
+                    <Typography
+                      variant="small"
+                      className="text-blue-gray-500 text-xl"
+                    >
                       {userData.location || "San Francisco, USA"}
                     </Typography>
                   </div>
@@ -181,10 +180,13 @@ export function Profile() {
                     <PhoneIcon className="h-5 w-5 text-blue-500" />
                   </div>
                   <div>
-                    <Typography variant="large" className="font-medium">
+                    <Typography variant="large" className="text-xl font-medium">
                       Phone
                     </Typography>
-                    <Typography variant="small" className="text-blue-gray-500">
+                    <Typography
+                      variant="small"
+                      className="text-blue-gray-500 text-xl"
+                    >
                       {userData.phone || "(44) 123 1234 123"}
                     </Typography>
                   </div>
@@ -194,19 +196,39 @@ export function Profile() {
                     <EnvelopeIcon className="h-5 w-5 text-blue-500" />
                   </div>
                   <div>
-                    <Typography variant="large" className="font-medium">
+                    <Typography variant="large" className="text-xl font-medium">
                       Email
                     </Typography>
-                    <Typography variant="small" className="text-blue-gray-500">
+                    <Typography
+                      variant="small"
+                      className="text-blue-gray-500 text-xl"
+                    >
                       {userData.email || "richard.davis@company.com"}
                     </Typography>
                   </div>
                 </div>
               </div>
               <div className="mt-6 border-t pt-6">
-                <Typography variant="large" className="mb-4 font-medium">
+                <Typography
+                  variant="large"
+                  className="mb-4 text-xl font-medium"
+                >
                   Social Media
                 </Typography>
+                <div className="mb-6 flex items-center gap-4">
+                  <a href="https://www.facebook.com/profile" target="_blank">
+                    <FaFacebookSquare className="h-8 w-8 transform text-blue-600 transition-all duration-300 hover:scale-110" />
+                  </a>
+                  <a href="https://www.reddit.com/user/profile" target="_blank">
+                    <FaRedditSquare className="h-8 w-8 transform text-orange-600 transition-all duration-300 hover:scale-110" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/profile" target="_blank">
+                    <FaLinkedin className="h-8 w-8 transform text-blue-700 transition-all duration-300 hover:scale-110" />
+                  </a>
+                  <a href="https://github.com/profile/  " target="_blank">
+                    <FaGithubSquare className="text-black-700 h-8 w-8 transform transition-all duration-300 hover:scale-110" />
+                  </a>
+                </div>
                 <div className="flex gap-4">
                   {userData.socialMedia?.map(({ platform, url, iconClass }) => (
                     <a
@@ -234,7 +256,10 @@ export function Profile() {
                 </Typography>
               </div>
               <div className="mb-6">
-                <Typography variant="large" className="mb-4 font-medium">
+                <Typography
+                  variant="large"
+                  className="mb-4 text-xl font-medium"
+                >
                   Top Skills
                 </Typography>
                 <div className="flex flex-wrap gap-2">
@@ -251,52 +276,78 @@ export function Profile() {
                 <Card className="transform bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 p-4 transition-all duration-500 hover:-translate-y-2 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography
                     variant="h4"
-                    className="bg-gradient-to-r from-white to-blue-100 bg-clip-text font-bold text-transparent text-white"
+                    className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-xl font-bold text-transparent text-white"
                   >
                     {userData.experience || "15+"}
                   </Typography>
-                  <Typography variant="large" className="text-blue-100">
+                  <Typography variant="large" className="text-xl text-blue-100">
                     Years Experience
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-purple-500 to-purple-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-purple-600 hover:via-purple-700 hover:to-purple-800 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography
                     variant="h4"
-                    className="bg-gradient-to-r from-white to-purple-100 bg-clip-text font-bold text-transparent text-white"
+                    className="bg-gradient-to-r from-white to-purple-100 bg-clip-text text-xl font-bold text-transparent text-white"
                   >
                     {userData.projects || "50+"}
                   </Typography>
-                  <Typography variant="large" className="text-purple-100">
+                  <Typography
+                    variant="large"
+                    className="text-xl text-purple-100"
+                  >
                     Projects Completed
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-green-500 to-green-700 p-4 transition-all duration-500 hover:-translate-y-2 hover:from-green-600 hover:via-green-700 hover:to-green-800 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography
                     variant="h4"
-                    className="bg-gradient-to-r from-white to-green-100 bg-clip-text font-bold text-transparent text-white"
+                    className="bg-gradient-to-r from-white to-green-100 bg-clip-text text-xl font-bold text-transparent text-white"
                   >
                     {userData.successRate || "100%"}
                   </Typography>
-                  <Typography variant="large" className="text-green-100">
+                  <Typography
+                    variant="large"
+                    className="text-xl text-green-100"
+                  >
                     Success Rate
                   </Typography>
                 </Card>
                 <Card className="transform bg-gradient-to-br from-orange-500 to-orange-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 hover:shadow-xl hover:shadow-blue-500/20">
                   <Typography
                     variant="h4"
-                    className="bg-gradient-to-r from-white to-orange-100 bg-clip-text font-bold text-transparent text-white"
+                    className="bg-gradient-to-r from-white to-orange-100 bg-clip-text text-xl font-bold text-transparent text-white"
                   >
                     {userData.support || "24/7"}
                   </Typography>
-                  <Typography variant="large" className="text-orange-100">
+                  <Typography
+                    variant="large"
+                    className="text-xl text-orange-100"
+                  >
                     Support
                   </Typography>
                 </Card>
               </div>
               <div>
-                <Typography variant="large" className="mb-4 font-medium">
+                <Typography
+                  variant="large"
+                  className="font-weight-900 mb-4 text-xl"
+                >
                   Recent Achievements
                 </Typography>
+                <Card className="transform bg-gradient-to-br from-cyan-500 to-cyan-700  p-4 transition-all duration-500 hover:-translate-y-2 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 hover:shadow-xl hover:shadow-blue-500/20">
+                  <Typography
+                    variant="h4"
+                    className="bg-gradient-to-r from-white to-orange-100 bg-clip-text text-xl font-bold text-transparent text-white"
+                  >
+                    {userData.support || "Top rated review"}
+                  </Typography>
+                  <Typography
+                    variant="large"
+                    className="text-xl text-orange-100"
+                  >
+                    Cooking Theme
+                  </Typography>
+                </Card>
                 <div className="flex flex-col gap-4">
                   {userData.achievements?.map((achievement, index) => (
                     <div
@@ -320,9 +371,9 @@ export function Profile() {
             <Typography
               variant="h4"
               color="blue-gray"
-              className="mb-8 flex items-center gap-3"
+              className="mb-8 flex items-center gap-3 text-xl"
             >
-              Recent Projects
+              Recent reviews
               <Chip
                 size="sm"
                 value={`${projectsData.length} projects`}
@@ -357,13 +408,13 @@ export function Profile() {
                     <Typography
                       variant="h5"
                       color="blue-gray"
-                      className="mb-3 font-semibold"
+                      className="mb-3 text-xl font-semibold"
                     >
                       {title}
                     </Typography>
                     <Typography
                       variant="medium"
-                      className="font-normal text-blue-gray-600"
+                      className="text-blue-gray-600 text-xl font-normal"
                     >
                       {description}
                     </Typography>
@@ -373,7 +424,7 @@ export function Profile() {
                       <Button
                         size="sm"
                         variant="text"
-                        className="flex items-center gap-2 hover:bg-blue-gray-50/50"
+                        className="hover:bg-blue-gray-50/50 flex items-center gap-2"
                       >
                         View Project
                         <svg
