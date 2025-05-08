@@ -58,7 +58,7 @@ const FeedMain = () => {
             <div className="flex items-center gap-4">
               <Input
                 type="text"
-                label="Create a post..."
+                label="Sukurti įrašą..."
                 className="!border-black/10 text-black focus:!border-cyan-500"
                 labelProps={{
                   className: "text-white/60",

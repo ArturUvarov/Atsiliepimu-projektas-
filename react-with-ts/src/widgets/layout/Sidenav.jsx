@@ -24,11 +24,11 @@ export function Sidenav({ routes }) {
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } border-blue-gray-100 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl border transition-transform duration-300 xl:translate-x-0`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl border border-blue-gray-100 transition-transform duration-300 xl:translate-x-0`}
     >
       <div className={`relative`}>
         {token && (
-          <div className="border-blue-gray-100 flex items-center gap-4 border-b p-4">
+          <div className="flex items-center gap-4 border-b border-blue-gray-100 p-4">
             <Avatar
               src={userInfo.avatar || "/img/bruce-mars.jpeg"}
               alt="avatar"
@@ -97,12 +97,18 @@ export function Sidenav({ routes }) {
                         fullWidth
                       >
                         <div
-                          className={`${isActive ? "text-black" : ""} text-xl`}
+                          className={`${isActive ? "text-white" : ""} text-xl`}
                         >
                           {icon}
                         </div>
                         <Typography
-                          color="black"
+                          color={
+                            isActive
+                              ? "white"
+                              : sidenavType === "dark"
+                              ? "white"
+                              : "blue-gray"
+                          }
                           className="text-base font-medium capitalize"
                         >
                           {name}

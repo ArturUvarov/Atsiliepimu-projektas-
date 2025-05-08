@@ -20,7 +20,7 @@ const name = {
 
 export const routes = [
   {
-    title: "main pages",
+    title: "pagrindiniai puslapiai",
     layout: "dashboard",
     pages: [
       {
@@ -44,7 +44,7 @@ export const routes = [
     ],
   },
   {
-    title: "auth pages",
+    title: "Autentifikavimo puslapiai",
     layout: "auth",
     pages: [
       {

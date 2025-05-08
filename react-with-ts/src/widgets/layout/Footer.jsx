@@ -48,10 +48,10 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { text: "About Us", href: "/about" },
-  { text: "Services", href: "/services" },
-  { text: "Blog", href: "/blog" },
-  { text: "Contact", href: "/contact" },
+  { text: "Apie mus", href: "/about" },
+  { text: "Paslaugos", href: "/services" },
+  { text: "Dienoraštis", href: "/blog" },
+  { text: "Kontaktai", href: "/contact" },
   { text: "FAQ", href: "/faq" },
 ];
 
@@ -71,15 +71,12 @@ export function Footer() {
   };
 
   return (
-    <footer
-      className="relative w-full bg-white/5 bg-cover bg-center"
-      role="contentinfo"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-gray-900/95 to-blue-gray-900/100" />
+    <footer className="relative w-full bg-cover bg-center" role="contentinfo">
+      <div className="absolute inset-0 bg-gradient-to-b" />
 
       <div className="relative mx-auto px-8 pb-8 pt-16">
-        <Card className="rounded-2xl border-2 border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-xl">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="rounded-2xl border-2 p-8 shadow-xl backdrop-blur-xl">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 ">
             {/* Company Info Section */}
             <div>
               <Typography
@@ -88,7 +85,7 @@ export function Footer() {
               >
                 Atsiliepimu projektas
               </Typography>
-              <Typography className="mb-6 text-xl font-normal text-blue-gray-100">
+              <Typography className="mb-6 text-xl font-normal ">
                 Padaryti pasaulį geresne vieta pasitelkiant naujoviškus
                 sprendimus.
               </Typography>
@@ -122,7 +119,7 @@ export function Footer() {
                     <li key={link.text}>
                       <a
                         href={link.href}
-                        className="group flex items-center gap-2 text-xl text-blue-gray-100 transition-all duration-300 hover:translate-x-2 hover:text-blue-500"
+                        className="group flex items-center gap-2 text-xl transition-all duration-300 hover:translate-x-2 hover:text-blue-500"
                       >
                         <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 transition-transform group-hover:scale-150" />
                         {link.text}
@@ -162,7 +159,7 @@ export function Footer() {
                   <a
                     key={index}
                     href={contact.href}
-                    className="group flex items-center gap-3 text-blue-gray-700 hover:text-blue-500"
+                    className="group flex items-center gap-3 hover:text-blue-500"
                   >
                     <div className="rounded-lg bg-blue-50 p-2 transition-colors group-hover:bg-blue-100">
                       <contact.icon className="h-5 w-5 text-blue-500" />
@@ -180,7 +177,7 @@ export function Footer() {
               <Typography variant="h5" className="mb-6 text-2xl font-semibold">
                 Naujienlaiškis
               </Typography>
-              <Typography className="mb-4 text-xl text-blue-gray-100">
+              <Typography className="mb-4 text-xl">
                 Sekite mūsų naujausias naujienas ir atnaujinimus.
               </Typography>
               <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
@@ -189,7 +186,7 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="rounded-lg border border-black/10 bg-white/5 px-4 py-2.5 placeholder-blue-gray-400 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  className="rounded-lg border border-black/10 bg-white/5 px-4 py-2.5 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   required
                   aria-label="Email for newsletter"
                 />
@@ -210,8 +207,8 @@ export function Footer() {
           {/* Copyright Section */}
           <div className="mt-16 border-t-2 border-white/20 pt-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-              <Typography className="text-center text-xl font-normal text-blue-gray-100">
-                &copy; {year} Atsiliepimu projektas. All rights reserved.
+              <Typography className="text-center text-xl font-normal">
+                &copy; {year} Atsiliepimu projektas. Visos teisės saugomos.
               </Typography>
               <div className="flex gap-8">
                 {["Terms & Conditions", "Privacy Policy", "Cookie Policy"].map(
@@ -220,7 +217,7 @@ export function Footer() {
                       key={text}
                       as="a"
                       href="#"
-                      className="text-xl font-normal text-blue-gray-100 transition-colors hover:text-blue-500"
+                      className="text-xl font-normal transition-colors hover:text-blue-500"
                     >
                       {text}
                     </Typography>

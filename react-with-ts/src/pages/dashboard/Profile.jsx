@@ -99,7 +99,7 @@ export function Profile() {
                 </div>
                 <Typography
                   variant="lead"
-                  className="text-blue-gray-600 font-normal"
+                  className="font-normal text-blue-gray-600"
                 >
                   {userData.role || "Vadovas / Įkūrėjas"}
                 </Typography>
@@ -154,7 +154,7 @@ export function Profile() {
                   Profilio Informacija
                 </Typography>
               </div>
-              <Typography className="text-blue-gray-500 mb-6 text-xl">
+              <Typography className="mb-6 text-xl text-blue-gray-500">
                 {userData.bio ||
                   "Sveiki, aš esu Richard Davis. Turiu daugiau nei 15 metų patirties technologijų srityje, padėjau vystyti keletą sėkmingų startuolių."}
               </Typography>
@@ -169,7 +169,7 @@ export function Profile() {
                     </Typography>
                     <Typography
                       variant="small"
-                      className="text-blue-gray-500 text-xl"
+                      className="text-xl text-blue-gray-500"
                     >
                       {userData.location || "Vilnius, Lietuva"}
                     </Typography>
@@ -185,7 +185,7 @@ export function Profile() {
                     </Typography>
                     <Typography
                       variant="small"
-                      className="text-blue-gray-500 text-xl"
+                      className="text-xl text-blue-gray-500"
                     >
                       {userData.phone || "(44) 123 1234 123"}
                     </Typography>
@@ -201,7 +201,7 @@ export function Profile() {
                     </Typography>
                     <Typography
                       variant="small"
-                      className="text-blue-gray-500 text-xl"
+                      className="text-xl text-blue-gray-500"
                     >
                       {userData.email || "richard.davis@company.com"}
                     </Typography>
@@ -339,13 +339,13 @@ export function Profile() {
                     variant="h4"
                     className="bg-gradient-to-r from-white to-orange-100 bg-clip-text text-xl font-bold text-transparent text-white"
                   >
-                    {userData.support || "Top rated review"}
+                    {userData.support || "Geriausiai įvertinta apžvalga“"}
                   </Typography>
                   <Typography
                     variant="large"
                     className="text-xl text-orange-100"
                   >
-                    Cooking Theme
+                    Maisto gaminimo tema
                   </Typography>
                 </Card>
                 <div className="flex flex-col gap-4">
@@ -414,7 +414,7 @@ export function Profile() {
                     </Typography>
                     <Typography
                       variant="medium"
-                      className="text-blue-gray-600 text-xl font-normal"
+                      className="text-xl font-normal text-blue-gray-600"
                     >
                       {description}
                     </Typography>
@@ -424,9 +424,9 @@ export function Profile() {
                       <Button
                         size="sm"
                         variant="text"
-                        className="hover:bg-blue-gray-50/50 flex items-center gap-2"
+                        className="flex items-center gap-2 hover:bg-blue-gray-50/50"
                       >
-                        View Project
+                        Žiūrėti atsiliepima
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
