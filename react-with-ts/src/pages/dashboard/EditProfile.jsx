@@ -59,14 +59,14 @@ export function editprofile({ isOpen, onClose, userData, onSave }) {
             </div>
             <div className="space-y-1 text-center">
               <Typography variant="h4" className="font-bold">
-                Edit Profile
+                Redaguoti profilį
               </Typography>
               <Typography
                 variant="paragraph"
                 color="blue-gray"
                 className="text-sm"
               >
-                Update your personal information
+                Atnaujinkite savo asmeninę informaciją
               </Typography>
             </div>
           </div>
@@ -157,7 +157,7 @@ export function editprofile({ isOpen, onClose, userData, onSave }) {
             fullWidth
             className="bg-blue-500 shadow-lg hover:bg-blue-600 hover:shadow-blue-500/20"
           >
-            Save Changes
+            Išsaugoti pakeitimus
           </Button>
           <Button
             variant="outlined"
@@ -165,7 +165,7 @@ export function editprofile({ isOpen, onClose, userData, onSave }) {
             fullWidth
             className="border-blue-500 text-blue-500"
           >
-            Cancel
+            Atšaukti
           </Button>
         </CardFooter>
       </Card>

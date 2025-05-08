@@ -1,50 +1,50 @@
 export const projectsData = [
   {
     img: "/img/home-decor-1.jpeg",
-    title: "Modern",
-    tag: "Review #1",
+    title: "Modernus",
+    tag: "Atsiliepimas #1",
     description:
-      "As Uber works through a huge amount of internal management turmoil.",
+      "Kai įmonė sprendžia didelius vidinius valdymo iššūkius.",
     route: "/dashboard/profile",
   },
   {
     img: "/img/home-decor-2.jpeg",
-    title: "Scandinavian",
-    tag: "Review #2",
+    title: "Skandinaviškas",
+    tag: "Atsiliepimas #2",
     description:
-      "Music is something that every person has his or her own specific opinion about.",
+      "Muzika yra tai, apie ką kiekvienas žmogus turi savo asmeninę nuomonę.",
     route: "/dashboard/profile",
   },
   {
     img: "/img/home-decor-3.jpeg",
-    title: "Minimalist",
-    tag: "Review #3",
+    title: "Minimalistinis",
+    tag: "Atsiliepimas #3",
     description:
-      "Different people have different taste, and various types of music.",
+      "Skirtingi žmonės turi skirtingą skonį ir mėgsta įvairių stilių muziką.",
     route: "/dashboard/profile",
   },
   {
     img: "/img/home-decor-4.jpeg",
-    title: "Gothic",
-    tag: "Review #4",
+    title: "Gotikinis",
+    tag: "Atsiliepimas #4",
     description:
-      "Why would anyone pick blue over pink? Pink is obviously a better color.",
+      "Kodėl kas nors rinktųsi mėlyną vietoj rožinės? Rožinė akivaizdžiai geresnė spalva.",
     route: "/dashboard/profile",
   },
   {
     img: "/img/home-decor-4.jpeg",
-    title: "Gothic",
-    tag: "Review #4",
+    title: "Gotikinis",
+    tag: "Atsiliepimas #4",
     description:
-      "Why would anyone pick blue over pink? Pink is obviously a better color.",
+      "Kodėl kas nors rinktųsi mėlyną vietoj rožinės? Rožinė akivaizdžiai geresnė spalva.",
     route: "/dashboard/profile",
   },
   {
     img: "/img/home-decor-4.jpeg",
-    title: "Gothic",
-    tag: "Review #4",
+    title: "Gotikinis",
+    tag: "Atsiliepimas #4",
     description:
-      "Why would anyone pick blue over pink? Pink is obviously a better color.",
+      "Kodėl kas nors rinktųsi mėlyną vietoj rožinės? Rožinė akivaizdžiai geresnė spalva.",
     route: "/dashboard/profile",
   },
 ];

@@ -43,7 +43,7 @@ export function ChatGpt() {
               <div className="flex h-32 w-32 transform items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-blue-600 shadow-lg transition-transform duration-300 hover:scale-105"></div>
               <div className="max-w-md text-center">
                 <h1 className="mb-4 text-4xl font-bold text-gray-800">
-                  Welcome to ChatGPT
+                 Sveiki atvykę į ChatGPT
                 </h1>
               </div>
             </div>
@@ -80,14 +80,14 @@ export function ChatGpt() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Type a message..."
+            placeholder="Įveskite žinutę..."
             className="flex-1 rounded-full border px-6 py-3 focus:border-blue-500 focus:outline-none"
           />
           <button
             onClick={handleSend}
             className="rounded-full bg-blue-500 px-6 py-3 text-white transition-colors hover:bg-blue-600"
           >
-            Send
+            Siųsti
           </button>
         </div>
       </div>

@@ -25,13 +25,13 @@ export const routes = [
     pages: [
       {
         icon: <MegaphoneIcon {...icon} />,
-        name: <span {...name}>Feed</span>,
+        name: <span {...name}>Naujienų srautas</span>,
         path: "/feed",
         element: <FeedMain />,
       },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: <span {...name}>Profile</span>,
+        name: <span {...name}>Profilis</span>,
         path: "/profile",
         element: <Profile />,
       },
@@ -49,13 +49,13 @@ export const routes = [
     pages: [
       {
         icon: <UserGroupIcon {...icon} />,
-        name: <span {...name}>Sign-in</span>,
+        name: <span {...name}>Prisijunkite</span>,
         path: "/sign-in",
         element: <SignIn />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
-        name: <span {...name}>Sign-up</span>,
+        name: <span {...name}>Registruotis</span>,
         path: "/sign-up",
         element: <SignUp />,
       },

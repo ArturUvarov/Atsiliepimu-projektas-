@@ -75,7 +75,7 @@ export function Footer() {
       className="relative w-full bg-white/5 bg-cover bg-center"
       role="contentinfo"
     >
-      <div className="from-blue-gray-900/95 to-blue-gray-900/100 absolute inset-0 bg-gradient-to-b" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-gray-900/95 to-blue-gray-900/100" />
 
       <div className="relative mx-auto px-8 pb-8 pt-16">
         <Card className="rounded-2xl border-2 border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-xl">
@@ -88,8 +88,9 @@ export function Footer() {
               >
                 Atsiliepimu projektas
               </Typography>
-              <Typography className="text-blue-gray-100 mb-6 text-xl font-normal">
-                Making the world a better place through innovative solutions.
+              <Typography className="mb-6 text-xl font-normal text-blue-gray-100">
+                Padaryti pasaulį geresne vieta pasitelkiant naujoviškus
+                sprendimus.
               </Typography>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social) => (
@@ -113,7 +114,7 @@ export function Footer() {
                 variant="h5"
                 className="mb-6 text-2xl font-semibold text-blue-500"
               >
-                Quick Links
+                Greitos nuorodos
               </Typography>
               <nav>
                 <ul className="space-y-4">
@@ -121,7 +122,7 @@ export function Footer() {
                     <li key={link.text}>
                       <a
                         href={link.href}
-                        className="text-blue-gray-100 group flex items-center gap-2 text-xl transition-all duration-300 hover:translate-x-2 hover:text-blue-500"
+                        className="group flex items-center gap-2 text-xl text-blue-gray-100 transition-all duration-300 hover:translate-x-2 hover:text-blue-500"
                       >
                         <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 transition-transform group-hover:scale-150" />
                         {link.text}
@@ -138,7 +139,7 @@ export function Footer() {
                 variant="h5"
                 className="mb-6 text-2xl font-semibold text-blue-500"
               >
-                Contact Info
+                Kontaktinė informacija
               </Typography>
               <address className="space-y-4 text-xl not-italic">
                 {[
@@ -161,7 +162,7 @@ export function Footer() {
                   <a
                     key={index}
                     href={contact.href}
-                    className="text-blue-gray-700 group flex items-center gap-3 hover:text-blue-500"
+                    className="group flex items-center gap-3 text-blue-gray-700 hover:text-blue-500"
                   >
                     <div className="rounded-lg bg-blue-50 p-2 transition-colors group-hover:bg-blue-100">
                       <contact.icon className="h-5 w-5 text-blue-500" />
@@ -177,10 +178,10 @@ export function Footer() {
             {/* Newsletter Section */}
             <div>
               <Typography variant="h5" className="mb-6 text-2xl font-semibold">
-                Newsletter
+                Naujienlaiškis
               </Typography>
-              <Typography className="text-blue-gray-100 mb-4 text-xl">
-                Stay updated with our latest news and updates.
+              <Typography className="mb-4 text-xl text-blue-gray-100">
+                Sekite mūsų naujausias naujienas ir atnaujinimus.
               </Typography>
               <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
                 <input
@@ -188,7 +189,7 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="placeholder-blue-gray-400 rounded-lg border border-black/10 bg-white/5 px-4 py-2.5 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  className="rounded-lg border border-black/10 bg-white/5 px-4 py-2.5 placeholder-blue-gray-400 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   required
                   aria-label="Email for newsletter"
                 />
@@ -209,7 +210,7 @@ export function Footer() {
           {/* Copyright Section */}
           <div className="mt-16 border-t-2 border-white/20 pt-8">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-              <Typography className="text-blue-gray-100 text-center text-xl font-normal">
+              <Typography className="text-center text-xl font-normal text-blue-gray-100">
                 &copy; {year} Atsiliepimu projektas. All rights reserved.
               </Typography>
               <div className="flex gap-8">
@@ -219,7 +220,7 @@ export function Footer() {
                       key={text}
                       as="a"
                       href="#"
-                      className="text-blue-gray-100 text-xl font-normal transition-colors hover:text-blue-500"
+                      className="text-xl font-normal text-blue-gray-100 transition-colors hover:text-blue-500"
                     >
                       {text}
                     </Typography>

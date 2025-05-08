@@ -65,7 +65,6 @@ export function Sidenav({ routes }) {
       </div>
       <div className="m-4">
         {routes.map(({ layout, title, pages }, key) => {
-          // Skip auth pages if user is logged in
           if (token && layout === "auth") return null;
 
           return (
