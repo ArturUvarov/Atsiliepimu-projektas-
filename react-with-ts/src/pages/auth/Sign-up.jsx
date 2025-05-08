@@ -44,21 +44,21 @@ export function SignUp() {
   return (
     <div className="relative min-h-screen w-full">
       <div className="absolute inset-0 bg-[url('/img/background-image.png')] bg-cover bg-center">
-        <div className="animate-gradient-xy absolute inset-0 bg-gradient-to-br from-white/95 via-blue-50/50 to-white/95 backdrop-blur-md" />
+        <div className="absolute inset-0 animate-gradient-xy bg-gradient-to-br from-white/95 via-blue-50/50 to-white/95 backdrop-blur-md" />
       </div>
 
       <div className="container mx-auto px-4">
         <div className="flex min-h-screen items-center justify-center">
           <Card className="w-full max-w-lg rounded-3xl border border-white/30 bg-white/90 p-8 shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-all duration-300 hover:shadow-[0_8px_48px_rgba(59,130,246,0.2)]">
-            <div className="animate-fade-in mb-12 text-center">
+            <div className="mb-12 animate-fade-in text-center">
               <Typography
                 variant="h2"
                 className="mb-3 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-4xl font-bold text-transparent"
               >
-                Create Account
+                Sukurti paskyrą
               </Typography>
               <Typography variant="paragraph" className="text-blue-gray-600">
-                Join our community and start your journey
+                Prisijunkite prie mūsų bendruomenės ir pradėkite savo kelionę
               </Typography>
             </div>
 
@@ -156,12 +156,12 @@ export function SignUp() {
                       variant="small"
                       className="inline-flex items-center font-medium text-blue-gray-700"
                     >
-                      I agree to the{" "}
+                      Sutinku su{" "}
                       <Link
                         to="/terms"
                         className="ml-1 text-blue-500 decoration-2 underline-offset-2 transition-colors hover:text-blue-700 hover:underline"
                       >
-                        Terms and Conditions
+                        Taisyklės ir sąlygos
                       </Link>
                     </Typography>
                   }
@@ -175,7 +175,7 @@ export function SignUp() {
               {error && (
                 <Typography
                   color="red"
-                  className="animate-shake mt-2 text-center"
+                  className="mt-2 animate-shake text-center"
                 >
                   {error}
                 </Typography>
@@ -186,7 +186,7 @@ export function SignUp() {
                 className="h-10 w-full bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-blue-500/40 active:scale-[0.98]"
                 type="submit"
               >
-                Create Account
+                Sukurti paskyrą
               </Button>
 
               <div className="flex items-center gap-4">
@@ -237,12 +237,12 @@ export function SignUp() {
                 variant="paragraph"
                 className="text-center font-medium text-blue-gray-600"
               >
-                Already have an account?{" "}
+                Jau turite paskyrą?{" "}
                 <Link
                   to="/auth/sign-in"
                   className="text-blue-500 transition-colors hover:text-blue-700"
                 >
-                  Sign in
+                  Prisijunkite
                 </Link>
               </Typography>
             </form>
