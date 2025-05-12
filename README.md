@@ -17,7 +17,7 @@
   <a href="#licencija">Licencija</a>
 </p>
 
-<h1 align="center"><a href="https://ibb.co/8gtT8VqG"><img src="https://i.ibb.co/F4CN7t2c/Screenshot-from-2025-04-30-14-06-04.png" alt="Screenshot-from-2025-04-30-14-06-04" border="0"></a></h1>
+<h1 align="center"><a href="https://ibb.co/MktRrmRs"><img src="https://i.ibb.co/MktRrmRs/Screenshot-from-2025-05-08-16-16-24.png" alt="Screenshot-from-2025-05-08-16-16-24" border="0"></a></a></h1>
 
 ## Technologijos
 
