@@ -47,31 +47,39 @@ export function SignIn() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    email: "",
+    email: localStorage.getItem("rememberedEmail") || "",
     password: "",
     terms: false,
+    rememberMe: false,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
+    // Add terms validation
+    if (!formData.terms) {
+      setError("Please accept the terms and conditions to continue");
+      return;
+    }
+
     try {
-      console.log("Attempting login with:", formData); // Debug log
       const response = await authservice.login({
         email: formData.email,
         password: formData.password,
+        rememberMe: formData.rememberMe, // Add this
       });
 
-      console.log("Login response:", response); // Debug log
-
       if (response) {
+        // If remember me is checked, store credentials securely
+        if (formData.rememberMe) {
+          localStorage.setItem("rememberedEmail", formData.email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
         navigate("/dashboard/profile");
-      } else {
-        setError("Login failed - no response data");
       }
     } catch (error) {
-      console.error("Login error:", error); // Debug log
       setError(error.message || "Login failed");
     }
   };
@@ -143,6 +151,10 @@ export function SignIn() {
                       Prisimink mane
                     </Typography>
                   }
+                  checked={formData.rememberMe}
+                  onChange={(e) =>
+                    setFormData({ ...formData, rememberMe: e.target.checked })
+                  }
                 />
                 <Link
                   to="#"
@@ -156,26 +168,28 @@ export function SignIn() {
               <div className="flex items-center">
                 <Checkbox
                   containerProps={{ className: "-ml-1" }}
-                  className="transition-all checked:border-blue-500 checked:bg-blue-500"
+                  className="h-5 w-5 rounded border-2 border-blue-gray-200 transition-all checked:border-blue-500 checked:bg-blue-500"
                   ripple={false}
                   crossOrigin={undefined}
+                  id="terms"
+                  checked={formData.terms}
+                  onChange={(e) => {
+                    setFormData({ ...formData, terms: e.target.checked });
+                    if (error && e.target.checked) setError("");
+                  }}
                   label={
                     <Typography
                       variant="small"
-                      className="flex items-center font-medium text-blue-gray-700"
+                      className="flex cursor-pointer items-center font-medium text-blue-gray-700"
                     >
-                      Sutinku su
+                      I agree to the
                       <Link
                         to="/terms"
-                        className="ml-1 text-blue-500 decoration-2 underline-offset-2 transition-colors hover:text-blue-700 hover:underline"
+                        className="ml-1 text-blue-500 transition-colors hover:text-blue-700"
                       >
-                        Taisyklės ir sąlygos
+                        Terms and Conditions
                       </Link>
                     </Typography>
-                  }
-                  checked={formData.terms}
-                  onChange={(e) =>
-                    setFormData({ ...formData, terms: e.target.checked })
                   }
                 />
               </div>

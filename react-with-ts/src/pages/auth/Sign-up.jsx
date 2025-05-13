@@ -28,8 +28,28 @@ export function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate all required fields
+    if (!formData.name || !formData.email || !formData.password) {
+      setError("Please fill in all required fields");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Validate password strength
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+
+    // Validate terms acceptance
     if (!formData.terms) {
-      setError("Please accept the terms and conditions");
+      setError("Please accept the terms and conditions to continue");
       return;
     }
 
@@ -148,26 +168,28 @@ export function SignUp() {
               <div className="flex items-center">
                 <Checkbox
                   containerProps={{ className: "-ml-1" }}
-                  className="transition-all checked:border-blue-500 checked:bg-blue-500"
+                  className="h-5 w-5 rounded border-2 border-blue-gray-200 transition-all checked:border-blue-500 checked:bg-blue-500"
                   ripple={false}
                   crossOrigin={undefined}
+                  id="terms"
+                  checked={formData.terms}
+                  onChange={(e) => {
+                    setFormData({ ...formData, terms: e.target.checked });
+                    if (error && e.target.checked) setError("");
+                  }}
                   label={
                     <Typography
                       variant="small"
-                      className="inline-flex items-center font-medium text-blue-gray-700"
+                      className="flex cursor-pointer items-center font-medium text-blue-gray-700"
                     >
-                      Sutinku su{" "}
+                      I agree to the
                       <Link
                         to="/terms"
-                        className="ml-1 text-blue-500 decoration-2 underline-offset-2 transition-colors hover:text-blue-700 hover:underline"
+                        className="ml-1 text-blue-500 transition-colors hover:text-blue-700"
                       >
-                        Taisyklės ir sąlygos
+                        Terms and Conditions
                       </Link>
                     </Typography>
-                  }
-                  checked={formData.terms}
-                  onChange={(e) =>
-                    setFormData({ ...formData, terms: e.target.checked })
                   }
                 />
               </div>
