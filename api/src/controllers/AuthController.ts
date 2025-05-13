@@ -66,7 +66,7 @@ export class AuthController {
       const token = jwt.sign(
         { id: existingUser.id, email: existingUser.email },
         process.env.JWT_SECRET || "default_secret",
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
       );
 
       return res.status(200).json({ message: "Login successful", token });
@@ -138,12 +138,12 @@ export class AuthController {
       if (!token) {
         return res.status(401).json({ message: "No token provided" });
       }
-  
+
       const decoded = jwt.verify(
         token,
         process.env.JWT_SECRET || "default_secret"
       ) as any;
-  
+
       const user = await db
         .select({
           role: User.role,
@@ -151,11 +151,11 @@ export class AuthController {
         .from(User)
         .where(eq(User.id, decoded.id))
         .execute();
-  
+
       if (!user || user.length === 0) {
         return res.status(404).json({ message: "User not found" });
       }
-  
+
       const isMod = user[0].role === 2;
       return res.json({ isMod });
     } catch (error) {
@@ -169,12 +169,12 @@ export class AuthController {
       if (!token) {
         return res.status(401).json({ message: "No token provided" });
       }
-  
+
       const decoded = jwt.verify(
         token,
         process.env.JWT_SECRET || "default_secret"
       ) as any;
-  
+
       const user = await db
         .select({
           role: User.role,
@@ -182,11 +182,11 @@ export class AuthController {
         .from(User)
         .where(eq(User.id, decoded.id))
         .execute();
-  
+
       if (!user || user.length === 0) {
         return res.status(404).json({ message: "User not found" });
       }
-  
+
       const isAdmin = user[0].role === 3;
       return res.json({ isAdmin });
     } catch (error) {

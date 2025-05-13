@@ -54,13 +54,24 @@ export function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     try {
-      const response = await authservice.login(formData);
-      if (response.token) {
-        // Redirect to profile page after successful login
+      console.log("Attempting login with:", formData); // Debug log
+      const response = await authservice.login({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      console.log("Login response:", response); // Debug log
+
+      if (response) {
         navigate("/dashboard/profile");
+      } else {
+        setError("Login failed - no response data");
       }
     } catch (error) {
+      console.error("Login error:", error); // Debug log
       setError(error.message || "Login failed");
     }
   };

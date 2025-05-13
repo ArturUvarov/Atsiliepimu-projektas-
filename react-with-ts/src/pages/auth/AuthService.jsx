@@ -1,16 +1,4 @@
-const API_URL = "http://localhost:3000/api/auth";
-
-const handleResponse = async (response) => {
-  const contentType = response.headers.get("content-type");
-  if (contentType && contentType.includes("application/json")) {
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.message || "An error occurred");
-    }
-    return data;
-  }
-  throw new Error("Invalid response from server");
-};
+import api from "./configuration/ApiConfiguration";
 
 const parseJwt = (token) => {
   try {
@@ -23,45 +11,33 @@ const parseJwt = (token) => {
 export const authservice = {
   async register(userData) {
     try {
-      const response = await fetch(`${API_URL}/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: userData.email,
-          password: userData.password,
-          username: userData.name,
-        }),
+      const response = await api.post("/auth/signup", {
+        email: userData.email,
+        password: userData.password,
+        username: userData.name,
       });
 
-      const data = await handleResponse(response);
-      return data;
+      return response.data;
     } catch (error) {
-      throw new Error(error.message || "Registration failed");
+      throw new Error(error.response?.data?.message || "Registration failed");
     }
   },
 
   async login(credentials) {
     try {
-      const response = await fetch(`${API_URL}/signin`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
+      console.log("Making login request with:", credentials); // Debug log
+
+      const response = await api.post("/auth/signin", {
+        email: credentials.email,
+        password: credentials.password,
       });
 
-      const data = await handleResponse(response);
-      console.log("Login response:", data);
+      console.log("Server response:", response.data); // Debug log
 
-      if (data.token) {
-        localStorage.setItem("token", data.token);
+      if (response.data?.token) {
+        localStorage.setItem("token", response.data.token);
+        const decodedToken = parseJwt(response.data.token);
 
-        // Parse JWT token to get user info
-        const decodedToken = parseJwt(data.token);
-
-        // Store user information
         const userInfo = {
           id: decodedToken.id,
           email: decodedToken.email,
@@ -70,47 +46,47 @@ export const authservice = {
         };
 
         localStorage.setItem("userInfo", JSON.stringify(userInfo));
-
-        console.log("Stored user info:", userInfo);
+        return userInfo;
+      } else {
+        throw new Error("No token received from server");
       }
-
-      return data;
     } catch (error) {
-      console.error("Login error:", error);
-      throw new Error(error.message || "Login failed");
+      console.error("Login error details:", error.response || error); // Debug log
+      throw new Error(error.response?.data?.message || "Login failed");
     }
   },
 
   async getProfile() {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/profile`, {
+      const response = await api.get("/auth/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      return await handleResponse(response);
+      return response.data;
     } catch (error) {
-      throw new Error(error.message || "Failed to fetch profile");
+      throw new Error(
+        error.response?.data?.message || "Failed to fetch profile",
+      );
     }
   },
 
   async updateProfile(updatedData) {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/profile`, {
-        method: "PUT",
+      const response = await api.put("/auth/profile", updatedData, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(updatedData),
       });
 
-      return await handleResponse(response);
+      return response.data;
     } catch (error) {
-      throw new Error(error.message || "Failed to update profile");
+      throw new Error(
+        error.response?.data?.message || "Failed to update profile",
+      );
     }
   },
 
@@ -118,5 +94,13 @@ export const authservice = {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
     window.location.href = "/auth/sign-in";
+  },
+
+  isAuthenticated() {
+    const token = localStorage.getItem("token");
+    if (!token) return false;
+
+    const decodedToken = parseJwt(token);
+    return decodedToken && decodedToken.exp * 1000 > Date.now();
   },
 };
