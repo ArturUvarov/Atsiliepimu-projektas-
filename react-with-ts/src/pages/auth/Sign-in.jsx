@@ -182,12 +182,12 @@ export function SignIn() {
                       variant="small"
                       className="flex cursor-pointer items-center font-medium text-blue-gray-700"
                     >
-                      I agree to the
+                      Sutinku su
                       <Link
                         to="/terms"
                         className="ml-1 text-blue-500 transition-colors hover:text-blue-700"
                       >
-                        Terms and Conditions
+                        Taisyklės ir sąlygos
                       </Link>
                     </Typography>
                   }
